@@ -147,6 +147,7 @@ class LoginViewModel: ObservableObject {
     @MainActor
     func signup(_ type: UserType,
                 username: String,
+                email: String,
                 password: String,
                 firstName: String,
                 lastName: String) async {
@@ -158,6 +159,7 @@ class LoginViewModel: ObservableObject {
             var newUser = User()
             // Set any properties you want saved on the user befor logging in.
             newUser.username = username.lowercased()
+            newUser.email = email
             newUser.password = password
             let user = try await newUser.signup()
             Logger.login.info("Parse signup successful: \(user)")

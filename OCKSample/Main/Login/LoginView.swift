@@ -26,6 +26,7 @@ struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
     @State var usersname = ""
     @State var password = ""
+    @State var email = ""
     @State var firstName: String = ""
     @State var lastName: String = ""
     @State var signupLoginSegmentValue = 0
@@ -33,17 +34,17 @@ struct LoginView: View {
     var body: some View {
         VStack {
             // Change the title to the name of your application
-            Text("CareKit Sample App")
+            Text("GeekApp")
                 .font(.largeTitle)
                 .foregroundColor(.white)
                 .padding()
             // Change this image to something that represents your application
-            Image("exercise.jpg")
+            Image("logo2")
                 .resizable()
                 .frame(width: 150, height: 150, alignment: .center)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color(.white), lineWidth: 4))
-                .shadow(radius: 10)
+//                .clipShape(Circle())
+//                .overlay(Circle().stroke(Color(.white), lineWidth: 4))
+                .shadow(radius: 5)
                 .padding()
 
             /*
@@ -74,6 +75,11 @@ struct LoginView: View {
 
                 switch signupLoginSegmentValue {
                 case 1:
+                    TextField("Email", text: $email)
+                        .padding()
+                        .background(.white)
+                        .cornerRadius(20.0)
+                        .shadow(radius: 10.0, x: 20, y: 10)
                     TextField("First Name", text: $firstName)
                         .padding()
                         .background(.white)
@@ -101,6 +107,7 @@ struct LoginView: View {
                     Task {
                         await viewModel.signup(.patient,
                                                username: usersname,
+                                               email: email,
                                                password: password,
                                                firstName: firstName,
                                                lastName: lastName)
