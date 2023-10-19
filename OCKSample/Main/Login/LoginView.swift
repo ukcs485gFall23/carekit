@@ -20,6 +20,18 @@ import UIKit
  the view when a change occurs. List to the last lecture
  in Section 2 for an explanation
  */
+extension Color {
+    init(hex: UInt, alpha: Double = 1.0) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xFF) / 255.0,
+            green: Double((hex >> 8) & 0xFF) / 255.0,
+            blue: Double(hex & 0xFF) / 255.0,
+            opacity: alpha
+        )
+    }
+}
+
 struct LoginView: View {
     @Environment(\.tintColor) var tintColor
     @Environment(\.tintColorFlip) var tintColorFlip
@@ -57,7 +69,7 @@ struct LoginView: View {
                 Text("Sign Up").tag(1)
             }
             .pickerStyle(.segmented)
-            .background(Color(tintColorFlip))
+            .background(Color(.gray))
             .cornerRadius(20.0)
             .padding()
 
@@ -107,7 +119,6 @@ struct LoginView: View {
                     Task {
                         await viewModel.signup(.patient,
                                                username: usersname,
-                                               email: email,
                                                password: password,
                                                firstName: firstName,
                                                lastName: lastName)
@@ -134,7 +145,8 @@ struct LoginView: View {
                         .frame(width: 300)
                 }
             })
-            .background(Color(.green))
+
+            .background(Color(hex: 0x4BA198))
             .cornerRadius(15)
 
             Button(action: {
