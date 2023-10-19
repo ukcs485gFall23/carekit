@@ -156,8 +156,10 @@ class LoginViewModel: ObservableObject {
                 return
             }
             var newUser = User()
+            var email = ""
             // Set any properties you want saved on the user befor logging in.
             newUser.username = username.lowercased()
+            newUser.email = email
             newUser.password = password
             let user = try await newUser.signup()
             Logger.login.info("Parse signup successful: \(user)")
