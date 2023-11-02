@@ -230,6 +230,12 @@ class CareViewController: OCKDailyPageViewController {
             return [OCKChecklistTaskViewController(query: query,
                                                    store: self.store)]
 
+        // Create a card for the doxylamine task if there are events for it on this day.
+        case TaskID.vision:
+
+            return [OCKChecklistTaskViewController(query: query,
+                                                   store: self.store)]
+
         case TaskID.nausea:
             var cards = [UIViewController]()
             // dynamic gradient colors
@@ -256,6 +262,17 @@ class CareViewController: OCKDailyPageViewController {
                 }
 
             let insightsCard = OCKCartesianChartViewController(
+                plotType: .bar,
+                selectedDate: date,
+                configurations: [nauseaDataSeries, doxylamineDataSeries],
+                store: self.store)
+
+            insightsCard.typedView.headerView.titleLabel.text = "Nausea & Doxylamine Intake"
+            insightsCard.typedView.headerView.detailLabel.text = "This Week"
+            insightsCard.typedView.headerView.accessibilityLabel = "Nausea & Doxylamine Intake, This Week"
+            cards.append(insightsCard)
+
+            let vision = OCKCartesianChartViewController(
                 plotType: .bar,
                 selectedDate: date,
                 configurations: [nauseaDataSeries, doxylamineDataSeries],

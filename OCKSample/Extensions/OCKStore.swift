@@ -112,6 +112,13 @@ extension OCKStore {
         nausea.instructions = "Tap the button below anytime you experience nausea."
         nausea.asset = "bed.double"
 
+        var nausea2 = OCKTask(id: TaskID.nausea,
+                             title: "Track your nausea",
+                             carePlanUUID: nil,
+                             schedule: nauseaSchedule)
+        nausea2.impactsAdherence = false
+        nausea2.instructions = "Tap the button below anytime you experience nausea."
+        nausea2.asset = "bed.double"
         let kegelElement = OCKScheduleElement(start: beforeBreakfast,
                                               end: nil,
                                               interval: DateComponents(day: 2))
