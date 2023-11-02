@@ -77,64 +77,68 @@ extension OCKStore {
         let thisMorning = Calendar.current.startOfDay(for: Date())
         let aFewDaysAgo = Calendar.current.date(byAdding: .day, value: -4, to: thisMorning)!
         let beforeBreakfast = Calendar.current.date(byAdding: .hour, value: 8, to: aFewDaysAgo)!
-        let afterLunch = Calendar.current.date(byAdding: .hour, value: 14, to: aFewDaysAgo)!
+        let afterWork = Calendar.current.date(byAdding: .hour, value: 18, to: aFewDaysAgo)!
+        let firstQuarterStart = Calendar.current.date(bySettingHour: 10, minute: 0, second: 0, of: Date())!
+        let firstQuarterEnd = Calendar.current.date(byAdding: .minute, value: 10, to: firstQuarterStart)!
+        let secondQuarterStart = Calendar.current.date(bySettingHour: 15, minute: 0, second: 0, of: Date())!
+        let secondQuarterEnd = Calendar.current.date(byAdding: .minute, value: 10, to: firstQuarterStart)!
 
         let schedule = OCKSchedule(composing: [
-            OCKScheduleElement(start: beforeBreakfast,
-                               end: nil,
+            OCKScheduleElement(start: firstQuarterStart,
+                               end: firstQuarterEnd,
                                interval: DateComponents(day: 1)),
 
-            OCKScheduleElement(start: afterLunch,
-                               end: nil,
+            OCKScheduleElement(start: secondQuarterStart,
+                               end: secondQuarterEnd,
                                interval: DateComponents(day: 2))
         ])
 
-        var doxylamine = OCKTask(id: TaskID.doxylamine,
-                                 title: "Take Doxylamine",
+        var stretch = OCKTask(id: TaskID.doxylamine,
+                                 title: "Take a walk",
                                  carePlanUUID: nil,
                                  schedule: schedule)
-        doxylamine.instructions = "Take 25mg of doxylamine when you experience nausea."
-        doxylamine.asset = "pills.fill"
+        stretch.instructions = "Take a 10 mins stretch"
+        stretch.asset = "strech.done"
 
-        let nauseaSchedule = OCKSchedule(composing: [
+        let clockIn = OCKSchedule(composing: [
             OCKScheduleElement(start: beforeBreakfast,
                                end: nil,
                                interval: DateComponents(day: 1),
-                               text: "Anytime throughout the day",
+                               text: "Check your Goals for today",
                                targetValues: [], duration: .allDay)
             ])
 
-        var nausea = OCKTask(id: TaskID.nausea,
-                             title: "Track your nausea",
+        var foodInTake = OCKTask(id: TaskID.nausea,
+                             title: "Track your meals",
                              carePlanUUID: nil,
-                             schedule: nauseaSchedule)
-        nausea.impactsAdherence = false
-        nausea.instructions = "Tap the button below anytime you experience nausea."
-        nausea.asset = "bed.double"
+                             schedule: clockIn)
+        foodInTake.impactsAdherence = false
+        foodInTake.instructions = "Tap the button below anytime you snack."
+        foodInTake.asset = "bed.double"
 
-        let kegelElement = OCKScheduleElement(start: beforeBreakfast,
+        let workOutElement = OCKScheduleElement(start: afterWork,
                                               end: nil,
                                               interval: DateComponents(day: 2))
-        let kegelSchedule = OCKSchedule(composing: [kegelElement])
-        var kegels = OCKTask(id: TaskID.kegels,
-                             title: "Kegel Exercises",
+        let workOutSchedule = OCKSchedule(composing: [workOutElement])
+        var workOut = OCKTask(id: TaskID.kegels,
+                             title: "Exercises",
                              carePlanUUID: nil,
-                             schedule: kegelSchedule)
-        kegels.impactsAdherence = true
-        kegels.instructions = "Perform kegel exercies"
+                             schedule: workOutSchedule)
+        workOut.impactsAdherence = true
+        workOut.instructions = "Perform a WorkOut"
 
         let stretchElement = OCKScheduleElement(start: beforeBreakfast,
                                                 end: nil,
                                                 interval: DateComponents(day: 1))
         let stretchSchedule = OCKSchedule(composing: [stretchElement])
-        var stretch = OCKTask(id: TaskID.stretch,
-                              title: "Stretch",
+        var meditate = OCKTask(id: TaskID.stretch,
+                              title: "Meditate",
                               carePlanUUID: nil,
                               schedule: stretchSchedule)
-        stretch.impactsAdherence = true
-        stretch.asset = "figure.walk"
+        meditate.impactsAdherence = true
+        meditate.asset = "figure.walk"
 
-        try await addTasksIfNotPresent([nausea, doxylamine, kegels, stretch])
+        try await addTasksIfNotPresent([foodInTake, meditate, workOut, stretch])
 
         var contact1 = OCKContact(id: "jane",
                                   givenName: "Jane",
