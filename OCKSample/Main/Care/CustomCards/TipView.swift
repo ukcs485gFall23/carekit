@@ -33,7 +33,6 @@ import CareKit
 import CareKitUI
 
 class TipView: OCKView, OCKCardable {
-
     var cardView: UIView { self }
     let contentView: UIView = OCKView()
     let headerView = OCKHeaderView()

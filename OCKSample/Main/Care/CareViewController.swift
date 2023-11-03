@@ -150,17 +150,54 @@ class CareViewController: OCKDailyPageViewController {
     override func dailyPageViewController(_ dailyPageViewController: OCKDailyPageViewController,
                                           prepare listViewController: OCKListViewController, for date: Date) {
         let isCurrentDay = Calendar.current.isDate(date, inSameDayAs: Date())
+        let currentHour = Calendar.current.component(.hour, from: Date())
+        let greeting: String
+        var tipTextList = [
+            "Take breaks from sitting every 20-30 minutes to avoid eye strain, muscle fatigue, and blood clots.",
+            "Set up an ergonomic workstation to prevent carpal tunnel syndrome and other repetitive strain injuries.",
+            "Drink plenty of water throughout the day to avoid dehydration.",
+            "Eat healthy snacks, such as fruits, vegetables, and nuts, to avoid energy crashes and maintain focus.",
+            "Get regular exercise, even a short walk or bike ride, to improve your physical and mental health.",
+            "Take frequent breaks to look away from your screen to prevent eye strain and headaches.",
+            "Stand up and move around every 20-30 minutes to reduce the risk of blood clots and improve circulation.",
+            "Manage stress through healthy activities such as exercise, meditation, or spending time in nature.",
+            "Get enough sleep, 7-8 hours per night, to improve cognitive function, mood, and overall health."
+        ]
+        // Create a list of predefined image names
+        let imageName = [
+            "exercise.jpg",
+            "exercise.jpg",
+            "exercise.jpg",
+            "exercise.jpg",
+            "exercise.jpg",
+            "exercise.jpg",
+            "exercise.jpg",
+            "exercise.jpg",
+            "exercise.jpg"
+        ]
+        // Shuffle the tip text list
+        tipTextList.shuffle()
 
+        // Get a random index from the tip text list
+        let randomIndex = Int.random(in: 0..<tipTextList.count)
         // Only show the tip view on the current date
         if isCurrentDay {
             if Calendar.current.isDate(date, inSameDayAs: Date()) {
                 // Add a non-CareKit view into the list
+                if currentHour < 12 {
+                    greeting = "Good morning!"
+                } else if currentHour < 18 {
+                    greeting = "Good afternoon!"
+                } else {
+                    greeting = "Good evening!"
+                }
                 let tipTitle = "Benefits of exercising"
-                let tipText = "Learn how activity can promote a healthy pregnancy."
+                let tipText = tipTextList[randomIndex]
+                let imageName = imageName[randomIndex]
                 let tipView = TipView()
-                tipView.headerView.titleLabel.text = tipTitle
+                tipView.headerView.titleLabel.text = "\(greeting) \(tipTitle)"
                 tipView.headerView.detailLabel.text = tipText
-                tipView.imageView.image = UIImage(named: "exercise.jpg")
+                tipView.imageView.image = UIImage(named: imageName)
                 tipView.customStyle = CustomStylerKey.defaultValue
                 listViewController.appendView(tipView, animated: false)
             }
