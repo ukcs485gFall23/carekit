@@ -288,10 +288,7 @@ class CareViewController: OCKDailyPageViewController {
         store.fetchAnyTasks(query: query, callbackQueue: .main) { result in
             switch result {
             case .success(let tasks):
-                let orderedTasks = TaskID.ordered.compactMap { orderedTaskID in
-                    tasks.first(where: { $0.id == orderedTaskID })
-                }
-                completion(.success(orderedTasks))
+                completion(.success(tasks))
             case .failure(let error):
                 completion(.failure(error))
             }
