@@ -124,8 +124,18 @@ class LoginViewModel: ObservableObject {
                                     familyName: lastName)
         newPatient.userType = type
         let savedPatient = try await appDelegate.store.addPatient(newPatient)
-        try await appDelegate.store.populateSampleData()
-        try await appDelegate.healthKitStore.populateSampleData()
+//        guard let patient = savedPatient as? OCKPatient else {
+//                    throw AppError.couldntCast
+//                }
+        // Added code to create a contact for the respective signed up user
+        let newContact = OCKContact(id: remoteUUID.uuidString,
+                                    name: newPatient.name,
+                                    carePlanUUID: nil)
+
+        // This is new contact that has never been saved before
+        _ = try await appDelegate.store.addAnyContact(newContact)
+        try await appDelegate.store?.populateSampleData(savedPatient.uuid)
+        try await appDelegate.healthKitStore?.populateSampleData(savedPatient.uuid)
         appDelegate.parseRemote.automaticallySynchronizes = true
 
         // Post notification to sync
@@ -156,7 +166,7 @@ class LoginViewModel: ObservableObject {
                 return
             }
             var newUser = User()
-            var email = ""
+            let email = User().email
             // Set any properties you want saved on the user befor logging in.
             newUser.username = username.lowercased()
             newUser.email = email

@@ -196,14 +196,25 @@ class CareViewController: OCKDailyPageViewController {
         events?.filter({ $0.result.task.id == taskId }).last
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     private func taskViewController(for task: OCKAnyTask,
                                     on date: Date) -> [UIViewController]? {
 
         var query = OCKEventQuery(for: Date())
         query.taskIDs = [task.id]
 
-        switch task.id {
-        case TaskID.steps:
+        let cardView: CareKitCard!
+
+        if let task = task as? OCKTask {
+            cardView = task.card
+        } else if let task = task as? OCKHealthKitTask {
+            cardView = task.card
+        } else {
+            return nil
+        }
+
+        switch cardView {
+        case .numericProgress:
             guard let event = getStoreFetchRequestEvent(for: task.id) else {
                 return nil
             }
@@ -212,11 +223,11 @@ class CareViewController: OCKDailyPageViewController {
 
             return [view.formattedHostingController()]
 
-        case TaskID.stretch:
+        case .instruction:
             return [OCKInstructionsTaskViewController(query: query,
                                                       store: self.store)]
 
-        case TaskID.kegels:
+        case .simple:
             /*
              Since the kegel task is only scheduled every other day, there will be cases
              where it is not contained in the tasks array returned from the query.
@@ -225,21 +236,21 @@ class CareViewController: OCKDailyPageViewController {
                                                 store: self.store)]
 
         // Create a card for the doxylamine task if there are events for it on this day.
-        case TaskID.doxylamine:
+        case .checklist:
 
             return [OCKChecklistTaskViewController(query: query,
                                                    store: self.store)]
 
-        case TaskID.nausea:
+        case .button:
             var cards = [UIViewController]()
             // dynamic gradient colors
             let nauseaGradientStart = TintColorFlipKey.defaultValue
             let nauseaGradientEnd = TintColorKey.defaultValue
-
+            let taskTitle = task.title ?? ""
             // Create a plot comparing nausea to medication adherence.
             let nauseaDataSeries = OCKDataSeriesConfiguration(
                 taskID: task.id,
-                legendTitle: "Nausea",
+                legendTitle: taskTitle,
                 gradientStartColor: nauseaGradientStart,
                 gradientEndColor: nauseaGradientEnd,
                 markerSize: 10) { event in
@@ -248,7 +259,7 @@ class CareViewController: OCKDailyPageViewController {
 
             let doxylamineDataSeries = OCKDataSeriesConfiguration(
                 taskID: task.id,
-                legendTitle: "Doxylamine",
+                legendTitle: TaskID.doxylamine,
                 gradientStartColor: .systemGray2,
                 gradientEndColor: .systemGray,
                 markerSize: 10) { event in
@@ -276,8 +287,38 @@ class CareViewController: OCKDailyPageViewController {
             cards.append(nauseaCard)
             return cards
 
+        case .labeledValue:
+
+            guard let event = getStoreFetchRequestEvent(for: task.id) else {
+                return nil
+            }
+            let view = LabeledValueTaskView<_LabeledValueTaskViewHeader>(event: event, numberFormatter: .none)
+                .careKitStyle(CustomStylerKey.defaultValue)
+
+            return [view.formattedHostingController()]
+
+        case .link:
+            let linkView = LinkView(title: .init("My Link"),
+                                    // swiftlint:disable:next line_length
+                                    links: [.website("http://www.engr.uky.edu/research-faculty/departments/computer-science",
+                                                     title: "College of Engineering")])
+            return [linkView.formattedHostingController()]
+
         default:
-            return nil
+            // Check if a healthKit task
+            guard task is OCKHealthKitTask else {
+                return [OCKSimpleTaskViewController(query: query,
+                                                    store: self.store)]
+            }
+
+            guard let event = getStoreFetchRequestEvent(for: task.id) else {
+                return nil
+            }
+
+            let view = LabeledValueTaskView<_LabeledValueTaskViewHeader>(event: event, numberFormatter: .none)
+                .careKitStyle(CustomStylerKey.defaultValue)
+
+            return [view.formattedHostingController()]
         }
     }
 

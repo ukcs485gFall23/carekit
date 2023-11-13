@@ -111,13 +111,36 @@ extension OCKStore {
         }
     }
 
+    func populateCarePlans(patientUUID: UUID? = nil) async throws {
+            let checkInCarePlan = OCKCarePlan(id: CarePlanID.checkIn.rawValue,
+                                              title: "Check in Care Plan",
+                                              patientUUID: patientUUID)
+            let healthCarePlan = OCKCarePlan(id: CarePlanID.health.rawValue,
+                                                 title: "Health Care Plan",
+                                                 patientUUID: patientUUID)
+            let productivityCarePlan = OCKCarePlan(id: CarePlanID.productivity.rawValue,
+                                                  title: "Productivity Care Plan",
+                                                  patientUUID: patientUUID)
+            let dietCarePlan = OCKCarePlan(id: CarePlanID.diet.rawValue,
+                                                  title: "Diet Care Plan",
+                                                  patientUUID: patientUUID)
+
+            try await addCarePlansIfNotPresent([checkInCarePlan, healthCarePlan, productivityCarePlan, dietCarePlan],
+                                               patientUUID: patientUUID)
+        }
+
     // Adds tasks and contacts into the store
-    func populateSampleData() async throws {
+    func populateSampleData(_ patientUUID: UUID? = nil) async throws {
+
+            try await populateCarePlans(patientUUID: patientUUID)
 
         let thisMorning = Calendar.current.startOfDay(for: Date())
-        let aFewDaysAgo = Calendar.current.date(byAdding: .day, value: -4, to: thisMorning)!
-        let beforeBreakfast = Calendar.current.date(byAdding: .hour, value: 8, to: aFewDaysAgo)!
-        let afterLunch = Calendar.current.date(byAdding: .hour, value: 14, to: aFewDaysAgo)!
+        guard let aFewDaysAgo = Calendar.current.date(byAdding: .day, value: -4, to: thisMorning),
+                      let beforeBreakfast = Calendar.current.date(byAdding: .hour, value: 8, to: aFewDaysAgo),
+                      let afterLunch = Calendar.current.date(byAdding: .hour, value: 14, to: aFewDaysAgo) else {
+                    Logger.ockStore.error("Could not unwrap calendar. Should never hit")
+                    throw AppError.couldntBeUnwrapped
+                }
 
         let schedule = OCKSchedule(composing: [
             OCKScheduleElement(start: beforeBreakfast,
@@ -128,7 +151,9 @@ extension OCKStore {
                                end: nil,
                                interval: DateComponents(day: 2))
         ])
-
+        /*
+               xTODO: You need to tie an OCPatient and CarePlan to these tasks,
+               */
         var doxylamine = OCKTask(id: TaskID.doxylamine,
                                  title: "Take Doxylamine",
                                  carePlanUUID: nil,
