@@ -10,7 +10,7 @@ import CareKitStore
 import Foundation
 
 class ContactViewModel: ObservableObject {
-
+    // type methods
     static func contactQuery() -> OCKContactQuery {
 
         let query = OCKContactQuery(for: Date())

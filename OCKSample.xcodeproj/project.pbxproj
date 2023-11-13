@@ -12,6 +12,8 @@
 		276B92262AF40B1900973C3D /* OCKHealthKitTask+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B92252AF40B1900973C3D /* OCKHealthKitTask+Custom.swift */; };
 		276B922B2AFA993100973C3D /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B922A2AFA993100973C3D /* ContactViewModel.swift */; };
 		276B922D2AFA995A00973C3D /* CustomContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B922C2AFA995A00973C3D /* CustomContactViewController.swift */; };
+		27F2B2012B01FA0A00D7135E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2002B01FA0A00D7135E /* ImagePicker.swift */; };
+		27F2B2032B01FA3600D7135E /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2022B01FA3600D7135E /* ProfileImageView.swift */; };
 		5173CB8A23C3A846007655A0 /* OCKSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5173CB8923C3A846007655A0 /* OCKSampleUITests.swift */; };
 		70077597252228E900EC0EDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70077596252228E900EC0EDA /* User.swift */; };
 		7007759B252229C900EC0EDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70077596252228E900EC0EDA /* User.swift */; };
@@ -166,6 +168,8 @@
 		276B92252AF40B1900973C3D /* OCKHealthKitTask+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OCKHealthKitTask+Custom.swift"; sourceTree = "<group>"; };
 		276B922A2AFA993100973C3D /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 		276B922C2AFA995A00973C3D /* CustomContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContactViewController.swift; sourceTree = "<group>"; };
+		27F2B2002B01FA0A00D7135E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		27F2B2022B01FA3600D7135E /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		5173CB8723C3A846007655A0 /* OCKSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCKSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5173CB8923C3A846007655A0 /* OCKSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCKSampleUITests.swift; sourceTree = "<group>"; };
 		5173CB8B23C3A846007655A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -347,6 +351,8 @@
 				DF9D6C152AF57EC200C5573A /* CAreKitTaskView */,
 				7036E4C8256E1A6F006E9A3C /* ProfileView.swift */,
 				7036E516256F2413006E9A3C /* ProfileViewModel.swift */,
+				27F2B2002B01FA0A00D7135E /* ImagePicker.swift */,
+				27F2B2022B01FA3600D7135E /* ProfileImageView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -810,6 +816,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7440E4F229477F7007AD30A /* CareViewController.swift in Sources */,
+				27F2B2032B01FA3600D7135E /* ProfileImageView.swift in Sources */,
 				918FDEB5271B40590045A0EF /* Installation.swift in Sources */,
 				DF9D6C192AF57F1A00C5573A /* CareKitTaskViewModel.swift in Sources */,
 				7099D20829E98E200037CD8E /* UserType.swift in Sources */,
@@ -854,6 +861,7 @@
 				70F921AE27CABE7700368CEC /* RemoteSessionDelegate.swift in Sources */,
 				70F03A952786093B00E5AFB4 /* OCKHealthKitPassthroughStore.swift in Sources */,
 				7036E4BF256DA089006E9A3C /* LoginViewModel.swift in Sources */,
+				27F2B2012B01FA0A00D7135E /* ImagePicker.swift in Sources */,
 				7036E517256F2413006E9A3C /* ProfileViewModel.swift in Sources */,
 				7099D20B29E98E400037CD8E /* InstallationChannel.swift in Sources */,
 			);
