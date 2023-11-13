@@ -15,6 +15,8 @@
 		27F2B2012B01FA0A00D7135E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2002B01FA0A00D7135E /* ImagePicker.swift */; };
 		27F2B2032B01FA3600D7135E /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2022B01FA3600D7135E /* ProfileImageView.swift */; };
 		27F2B2052B01FD6B00D7135E /* CarePlanID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2042B01FD6B00D7135E /* CarePlanID.swift */; };
+		27F2B2082B01FED100D7135E /* MyContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2072B01FED100D7135E /* MyContactViewController.swift */; };
+		27F2B20C2B01FF0600D7135E /* MyContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B20B2B01FF0600D7135E /* MyContactView.swift */; };
 		5173CB8A23C3A846007655A0 /* OCKSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5173CB8923C3A846007655A0 /* OCKSampleUITests.swift */; };
 		70077597252228E900EC0EDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70077596252228E900EC0EDA /* User.swift */; };
 		7007759B252229C900EC0EDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70077596252228E900EC0EDA /* User.swift */; };
@@ -171,6 +173,8 @@
 		27F2B2002B01FA0A00D7135E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		27F2B2022B01FA3600D7135E /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		27F2B2042B01FD6B00D7135E /* CarePlanID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePlanID.swift; sourceTree = "<group>"; };
+		27F2B2072B01FED100D7135E /* MyContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactViewController.swift; sourceTree = "<group>"; };
+		27F2B20B2B01FF0600D7135E /* MyContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactView.swift; sourceTree = "<group>"; };
 		5173CB8723C3A846007655A0 /* OCKSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCKSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5173CB8923C3A846007655A0 /* OCKSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCKSampleUITests.swift; sourceTree = "<group>"; };
 		5173CB8B23C3A846007655A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -279,6 +283,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27F2B2062B01FEBA00D7135E /* MyContact */ = {
+			isa = PBXGroup;
+			children = (
+				27F2B2072B01FED100D7135E /* MyContactViewController.swift */,
+				27F2B20B2B01FF0600D7135E /* MyContactView.swift */,
+			);
+			path = MyContact;
+			sourceTree = "<group>";
+		};
 		51431F9723D166AE006A7CFD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +362,7 @@
 		7030887C258272E700FFABB6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				27F2B2062B01FEBA00D7135E /* MyContact */,
 				DF9D6C152AF57EC200C5573A /* CAreKitTaskView */,
 				7036E4C8256E1A6F006E9A3C /* ProfileView.swift */,
 				7036E516256F2413006E9A3C /* ProfileViewModel.swift */,
@@ -834,6 +848,7 @@
 				70F03AA827860E7700E5AFB4 /* FontColorKey.swift in Sources */,
 				9169381B271B64E100A634ED /* Styler.swift in Sources */,
 				70F921A827CA9A3A00368CEC /* CustomStylerKey.swift in Sources */,
+				27F2B2082B01FED100D7135E /* MyContactViewController.swift in Sources */,
 				70221F3428D8ABBE00971195 /* AppDelegate+UIApplicationDelegate.swift in Sources */,
 				9169381D271B650700A634ED /* ColorStyler.swift in Sources */,
 				E72B2C0A226939E3009A9438 /* AppDelegate.swift in Sources */,
@@ -846,6 +861,7 @@
 				276B922B2AFA993100973C3D /* ContactViewModel.swift in Sources */,
 				7099D1FF29E98D900037CD8E /* AppError.swift in Sources */,
 				276B92242AF40AF500973C3D /* OCKTask+Custom.swift in Sources */,
+				27F2B20C2B01FF0600D7135E /* MyContactView.swift in Sources */,
 				70F0EFE828C2EC050005B5A2 /* OCKSampleApp.swift in Sources */,
 				918FDEB7271B41FF0045A0EF /* Logger.swift in Sources */,
 				7099D20229E98DDF0037CD8E /* MainViewPath.swift in Sources */,

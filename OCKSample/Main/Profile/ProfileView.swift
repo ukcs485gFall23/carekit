@@ -93,6 +93,14 @@ struct ProfileView: View {
                 .cornerRadius(15)
             }
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                                    Button("My Contact") {
+                                        viewModel.isPresentingContact = true
+                                    }
+                                    .sheet(isPresented: $viewModel.isPresentingContact) {
+                                        MyContactView()
+                                    }
+                                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Add Task") {
                         isPresentingAddTask = true
