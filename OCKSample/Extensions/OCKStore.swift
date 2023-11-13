@@ -112,11 +112,20 @@ extension OCKStore {
     }
 
     func populateCarePlans(patientUUID: UUID? = nil) async throws {
-            // xTODO: Add at least 2 CarePlans.
             let checkInCarePlan = OCKCarePlan(id: CarePlanID.checkIn.rawValue,
                                               title: "Check in Care Plan",
                                               patientUUID: patientUUID)
-            try await addCarePlansIfNotPresent([checkInCarePlan],
+            let healthCarePlan = OCKCarePlan(id: CarePlanID.health.rawValue,
+                                                 title: "Health Care Plan",
+                                                 patientUUID: patientUUID)
+            let productivityCarePlan = OCKCarePlan(id: CarePlanID.productivity.rawValue,
+                                                  title: "Productivity Care Plan",
+                                                  patientUUID: patientUUID)
+            let dietCarePlan = OCKCarePlan(id: CarePlanID.diet.rawValue,
+                                                  title: "Diet Care Plan",
+                                                  patientUUID: patientUUID)
+
+            try await addCarePlansIfNotPresent([checkInCarePlan, healthCarePlan, productivityCarePlan, dietCarePlan],
                                                patientUUID: patientUUID)
         }
 
