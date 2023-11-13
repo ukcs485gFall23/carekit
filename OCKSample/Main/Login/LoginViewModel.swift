@@ -131,7 +131,7 @@ class LoginViewModel: ObservableObject {
 
         // This is new contact that has never been saved before
         _ = try await appDelegate.store.addAnyContact(newContact)
-        // TODO: You need to handle tying a patient to all of your
+        // xTODO: You need to handle tying a patient to all of your
         // CarePlans, how would you do it here since you have a
         // a saved patient uuid?
         try await appDelegate.store.populateSampleData()
@@ -166,7 +166,7 @@ class LoginViewModel: ObservableObject {
                 return
             }
             var newUser = User()
-            var email = ""
+            let email = User().email
             // Set any properties you want saved on the user befor logging in.
             newUser.username = username.lowercased()
             newUser.email = email

@@ -43,10 +43,9 @@ extension OCKHealthKitPassthroughStore {
     }
 
     /*
-         TODO: You need to tie an OCPatient and CarePlan to these tasks,
+         xTODO: You need to tie an OCPatient and CarePlan to these tasks,
         */
         func populateSampleData(_ patientUUID: UUID? = nil) async throws {
-
 
         let schedule = OCKSchedule.dailyAtTime(
             hour: 8, minutes: 0, start: Date(), end: nil, text: nil,

@@ -17,6 +17,9 @@
 		27F2B2052B01FD6B00D7135E /* CarePlanID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2042B01FD6B00D7135E /* CarePlanID.swift */; };
 		27F2B2082B01FED100D7135E /* MyContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2072B01FED100D7135E /* MyContactViewController.swift */; };
 		27F2B20C2B01FF0600D7135E /* MyContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B20B2B01FF0600D7135E /* MyContactView.swift */; };
+		27F2B2122B02030B00D7135E /* OCKHealthKitPassthroughStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F03A942786093B00E5AFB4 /* OCKHealthKitPassthroughStore.swift */; };
+		27F2B2132B02031200D7135E /* OCKStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F03A962786098F00E5AFB4 /* OCKStore.swift */; };
+		27F2B2152B02036C00D7135E /* CarePlanID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2042B01FD6B00D7135E /* CarePlanID.swift */; };
 		5173CB8A23C3A846007655A0 /* OCKSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5173CB8923C3A846007655A0 /* OCKSampleUITests.swift */; };
 		70077597252228E900EC0EDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70077596252228E900EC0EDA /* User.swift */; };
 		7007759B252229C900EC0EDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70077596252228E900EC0EDA /* User.swift */; };
@@ -800,6 +803,8 @@
 				7099D20629E98DFF0037CD8E /* TaskID.swift in Sources */,
 				7075151E28DE1A8300A57A0C /* MainView.swift in Sources */,
 				70A98D62278A2683009B58F2 /* Styler.swift in Sources */,
+				27F2B2152B02036C00D7135E /* CarePlanID.swift in Sources */,
+				27F2B2132B02031200D7135E /* OCKStore.swift in Sources */,
 				91693818271B5E1600A634ED /* Constants.swift in Sources */,
 				7075152028DE1BB400A57A0C /* LoginView.swift in Sources */,
 				70F921B227CAC16E00368CEC /* RemoteSessionDelegate.swift in Sources */,
@@ -818,6 +823,7 @@
 				91AD923F24A4C42D00925D4D /* NotificationController.swift in Sources */,
 				70CF66E528E1E74C00FAE977 /* TintColorFlipKey.swift in Sources */,
 				70C0D474279BA492003DA141 /* Utility.swift in Sources */,
+				27F2B2122B02030B00D7135E /* OCKHealthKitPassthroughStore.swift in Sources */,
 				91AD923D24A4C42D00925D4D /* AppDelegate.swift in Sources */,
 				91AD924124A4C42D00925D4D /* NotificationView.swift in Sources */,
 				7099D20C29E98E400037CD8E /* InstallationChannel.swift in Sources */,

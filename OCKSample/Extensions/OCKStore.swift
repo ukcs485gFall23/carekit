@@ -112,19 +112,19 @@ extension OCKStore {
     }
 
     func populateCarePlans(patientUUID: UUID? = nil) async throws {
-            // TODO: Add at least 2 CarePlans.
+            // xTODO: Add at least 2 CarePlans.
             let checkInCarePlan = OCKCarePlan(id: CarePlanID.checkIn.rawValue,
                                               title: "Check in Care Plan",
                                               patientUUID: patientUUID)
             try await addCarePlansIfNotPresent([checkInCarePlan],
                                                patientUUID: patientUUID)
         }
-    
+
     // Adds tasks and contacts into the store
     func populateSampleData(_ patientUUID: UUID? = nil) async throws {
 
             try await populateCarePlans(patientUUID: patientUUID)
-        
+
         let thisMorning = Calendar.current.startOfDay(for: Date())
         guard let aFewDaysAgo = Calendar.current.date(byAdding: .day, value: -4, to: thisMorning),
                       let beforeBreakfast = Calendar.current.date(byAdding: .hour, value: 8, to: aFewDaysAgo),
@@ -143,7 +143,7 @@ extension OCKStore {
                                interval: DateComponents(day: 2))
         ])
         /*
-               TODO: You need to tie an OCPatient and CarePlan to these tasks,
+               xTODO: You need to tie an OCPatient and CarePlan to these tasks,
                */
         var doxylamine = OCKTask(id: TaskID.doxylamine,
                                  title: "Take Doxylamine",

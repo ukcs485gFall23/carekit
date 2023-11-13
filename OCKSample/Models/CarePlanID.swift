@@ -8,7 +8,7 @@
 
 import Foundation
 
-// TODO: Add CarePlans specific to your app here.
+// xTODO: Add CarePlans specific to your app here.
 // If you don't remember what a OCKCarePlan is, read the CareKit docs.
 enum CarePlanID: String {
     case health // Add custom id's for your Care Plans, these are examples
