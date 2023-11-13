@@ -124,6 +124,16 @@ class LoginViewModel: ObservableObject {
                                     familyName: lastName)
         newPatient.userType = type
         let savedPatient = try await appDelegate.store.addPatient(newPatient)
+        // Added code to create a contact for the respective signed up user
+        let newContact = OCKContact(id: remoteUUID.uuidString,
+                                    name: newPatient.name,
+                                    carePlanUUID: nil)
+
+        // This is new contact that has never been saved before
+        _ = try await appDelegate.store.addAnyContact(newContact)
+        // TODO: You need to handle tying a patient to all of your
+        // CarePlans, how would you do it here since you have a
+        // a saved patient uuid?
         try await appDelegate.store.populateSampleData()
         try await appDelegate.healthKitStore.populateSampleData()
         appDelegate.parseRemote.automaticallySynchronizes = true
