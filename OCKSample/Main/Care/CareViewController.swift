@@ -160,7 +160,10 @@ class CareViewController: OCKDailyPageViewController {
                         let onboardCard = OCKSurveyTaskViewController(eventQuery: query,
                                                                       store: self.store,
                                                                       survey: onboardSurvey.createSurvey(),
-                                                                      extractOutcome: { _ in [OCKOutcomeValue(Date())] })
+                                                                      extractOutcome: { _ in
+                            [OCKOutcomeValue(Date())]
+                        }
+                        )
                         onboardCard.surveyDelegate = self
 
                         listViewController.clear()
@@ -171,7 +174,6 @@ class CareViewController: OCKDailyPageViewController {
                         self.isLoading = false
                         return
             }
-
 
         do {
                     let tasks = try await fetchTasks(on: date)
@@ -327,7 +329,7 @@ class CareViewController: OCKDailyPageViewController {
                                     links: [.website("http://www.engr.uky.edu/research-faculty/departments/computer-science",
                                                      title: "College of Engineering")])
             return [linkView.formattedHostingController()]
-            
+
         case .survey:
                     guard let surveyTask = task as? OCKTask else {
                         Logger.feed.error("Can only use a survey for an \"OCKTask\", not \(task.id)")
@@ -359,7 +361,7 @@ class CareViewController: OCKDailyPageViewController {
                 .careKitStyle(CustomStylerKey.defaultValue)
 
             return [view.formattedHostingController()]
-    
+
         }
     }
 

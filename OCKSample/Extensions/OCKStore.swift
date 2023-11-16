@@ -14,7 +14,7 @@ import ParseSwift
 import ParseCareKit
 
 extension OCKStore {
-    
+
     @MainActor
         class func getCarePlanUUIDs() async throws -> [CarePlanID: UUID] {
             var results = [CarePlanID: UUID]()
@@ -266,7 +266,7 @@ extension OCKStore {
 
         try await addContactsIfNotPresent([contact1, contact2])
     }
-    
+
     func addOnboardingTask(_ carePlanUUID: UUID? = nil) async throws {
             let onboardSchedule = OCKSchedule.dailyAtTime(
                         hour: 0, minutes: 0,

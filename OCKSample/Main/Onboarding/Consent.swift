@@ -10,7 +10,7 @@ import Foundation
 
 // swiftlint:disable line_length
 /*
- TODO: The informedConsentHTML property allows you to display HTML
+ xTODO: The informedConsentHTML property allows you to display HTML
  on an ResearchKit Survey. Modify the consent so it properly
  represents the usecase of your application.
  */

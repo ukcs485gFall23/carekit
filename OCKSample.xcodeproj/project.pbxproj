@@ -121,6 +121,11 @@
 		DF62052C2B067F1500C605B8 /* RangeOfMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052B2B067F1500C605B8 /* RangeOfMotion.swift */; };
 		DF62052E2B067F2D00C605B8 /* Surveyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052D2B067F2D00C605B8 /* Surveyable.swift */; };
 		DF6205302B067F4300C605B8 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052F2B067F4300C605B8 /* Survey.swift */; };
+		DF6205312B0682E100C605B8 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052F2B067F4300C605B8 /* Survey.swift */; };
+		DF6205322B0682F300C605B8 /* Surveyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052D2B067F2D00C605B8 /* Surveyable.swift */; };
+		DF6205332B06830100C605B8 /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6205272B067EF100C605B8 /* CheckIn.swift */; };
+		DF6205342B06830600C605B8 /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6205292B067F0100C605B8 /* Onboard.swift */; };
+		DF6205352B06830A00C605B8 /* RangeOfMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052B2B067F1500C605B8 /* RangeOfMotion.swift */; };
 		DF9D6C172AF57EDF00C5573A /* CareKitTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D6C162AF57EDF00C5573A /* CareKitTaskView.swift */; };
 		DF9D6C192AF57F1A00C5573A /* CareKitTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D6C182AF57F1A00C5573A /* CareKitTaskViewModel.swift */; };
 		DF9D6C1A2AF57F4D00C5573A /* OCKTask+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B92232AF40AF500973C3D /* OCKTask+Custom.swift */; };
@@ -839,6 +844,7 @@
 				DF9D6C1A2AF57F4D00C5573A /* OCKTask+Custom.swift in Sources */,
 				7099D20029E98D900037CD8E /* AppError.swift in Sources */,
 				70A98D63278A268B009B58F2 /* ColorStyler.swift in Sources */,
+				DF6205342B06830600C605B8 /* Onboard.swift in Sources */,
 				918FDEB8271B49060045A0EF /* Logger.swift in Sources */,
 				91AD923B24A4C42D00925D4D /* CareView.swift in Sources */,
 				70F921A927CA9A4000368CEC /* CustomStylerKey.swift in Sources */,
@@ -853,8 +859,10 @@
 				7075152028DE1BB400A57A0C /* LoginView.swift in Sources */,
 				70F921B227CAC16E00368CEC /* RemoteSessionDelegate.swift in Sources */,
 				70221F2F28D7CDE400971195 /* AppDelegate+ParseRemoteDelegate.swift in Sources */,
+				DF6205332B06830100C605B8 /* CheckIn.swift in Sources */,
 				7083A857279CA40F00B3832E /* PCKUtility.swift in Sources */,
 				91AD923924A4C42D00925D4D /* OCKWatchSampleApp.swift in Sources */,
+				DF6205322B0682F300C605B8 /* Surveyable.swift in Sources */,
 				70F03AA627860B2500E5AFB4 /* OCKPatient+Parse.swift in Sources */,
 				70221F3828D8C0CB00971195 /* AppDelegateKey.swift in Sources */,
 				9103AA5227B8C913002C921E /* FontColorKey.swift in Sources */,
@@ -865,12 +873,14 @@
 				7099D20929E98E200037CD8E /* UserType.swift in Sources */,
 				918FDEB9271B493A0045A0EF /* Installation.swift in Sources */,
 				91AD923F24A4C42D00925D4D /* NotificationController.swift in Sources */,
+				DF6205352B06830A00C605B8 /* RangeOfMotion.swift in Sources */,
 				70CF66E528E1E74C00FAE977 /* TintColorFlipKey.swift in Sources */,
 				70C0D474279BA492003DA141 /* Utility.swift in Sources */,
 				27F2B2122B02030B00D7135E /* OCKHealthKitPassthroughStore.swift in Sources */,
 				91AD923D24A4C42D00925D4D /* AppDelegate.swift in Sources */,
 				91AD924124A4C42D00925D4D /* NotificationView.swift in Sources */,
 				7099D20C29E98E400037CD8E /* InstallationChannel.swift in Sources */,
+				DF6205312B0682E100C605B8 /* Survey.swift in Sources */,
 				70308886258273D400FFABB6 /* LoginViewModel.swift in Sources */,
 				70F921B127CAC16E00368CEC /* SessionDelegate.swift in Sources */,
 			);

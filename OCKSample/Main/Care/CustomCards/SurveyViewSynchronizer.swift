@@ -23,7 +23,7 @@ final class SurveyViewSynchronizer: OCKSurveyTaskViewSynchronizer {
         if let event = context.viewModel.first?.first, event.outcome != nil {
             view.instructionsLabel.isHidden = false
             /*
-             TODO: You need to modify this so the instuction label shows
+             xTODO: You need to modify this so the instuction label shows
              correctly for each Task/Card.
              Hint - Each event (OCKAnyEvent) has a task. How can you use
              this task to determine what instruction answers should show?

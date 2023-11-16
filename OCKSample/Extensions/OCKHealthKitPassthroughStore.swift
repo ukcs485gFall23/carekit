@@ -51,7 +51,6 @@ extension OCKHealthKitPassthroughStore {
             hour: 8, minutes: 0, start: Date(), end: nil, text: nil,
             duration: .hours(12), targetValues: [OCKOutcomeValue(2000.0, units: "Steps")])
 
-            
             /*
                      xTODO: You need to tie an OCKCarePlan to each HealthKit task. There was a
                      a method added recently in Extensions/OCKStore.swift to assist with this. Use this method here
