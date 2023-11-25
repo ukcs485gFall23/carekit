@@ -10,12 +10,12 @@ import Foundation
 
 enum TaskID {
     static let doxylamine = "doxylamine"
-    static let nausea = "nausea"
+    static let water = "water"
     static let stretch = "stretch"
     static let kegels = "kegels"
     static let steps = "steps"
 
     static var ordered: [String] {
-        [Self.steps, Self.doxylamine, Self.kegels, Self.stretch, Self.nausea]
+        [Self.steps, Self.doxylamine, Self.kegels, Self.stretch, Self.water]
     }
 }
