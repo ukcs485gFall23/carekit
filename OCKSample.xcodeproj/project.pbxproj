@@ -112,20 +112,6 @@
 		91AD924324A4C42E00925D4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91AD924224A4C42E00925D4D /* Assets.xcassets */; };
 		91AD924624A4C42E00925D4D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91AD924524A4C42E00925D4D /* Preview Assets.xcassets */; };
 		91AD924B24A4C42E00925D4D /* OCKWatchSample.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 91AD922724A4C42B00925D4D /* OCKWatchSample.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		DF62051D2B0677CF00C605B8 /* ResearchKit in Frameworks */ = {isa = PBXBuildFile; productRef = DF62051C2B0677CF00C605B8 /* ResearchKit */; };
-		DF62051F2B0678E200C605B8 /* OCKAnyEvent+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62051E2B0678E200C605B8 /* OCKAnyEvent+Custom.swift */; };
-		DF6205222B067DB500C605B8 /* SurveyViewSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6205212B067DB500C605B8 /* SurveyViewSynchronizer.swift */; };
-		DF6205252B067E6B00C605B8 /* Consent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6205242B067E6B00C605B8 /* Consent.swift */; };
-		DF6205282B067EF100C605B8 /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6205272B067EF100C605B8 /* CheckIn.swift */; };
-		DF62052A2B067F0100C605B8 /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6205292B067F0100C605B8 /* Onboard.swift */; };
-		DF62052C2B067F1500C605B8 /* RangeOfMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052B2B067F1500C605B8 /* RangeOfMotion.swift */; };
-		DF62052E2B067F2D00C605B8 /* Surveyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052D2B067F2D00C605B8 /* Surveyable.swift */; };
-		DF6205302B067F4300C605B8 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052F2B067F4300C605B8 /* Survey.swift */; };
-		DF6205312B0682E100C605B8 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052F2B067F4300C605B8 /* Survey.swift */; };
-		DF6205322B0682F300C605B8 /* Surveyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052D2B067F2D00C605B8 /* Surveyable.swift */; };
-		DF6205332B06830100C605B8 /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6205272B067EF100C605B8 /* CheckIn.swift */; };
-		DF6205342B06830600C605B8 /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6205292B067F0100C605B8 /* Onboard.swift */; };
-		DF6205352B06830A00C605B8 /* RangeOfMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62052B2B067F1500C605B8 /* RangeOfMotion.swift */; };
 		DF9D6C172AF57EDF00C5573A /* CareKitTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D6C162AF57EDF00C5573A /* CareKitTaskView.swift */; };
 		DF9D6C192AF57F1A00C5573A /* CareKitTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D6C182AF57F1A00C5573A /* CareKitTaskViewModel.swift */; };
 		DF9D6C1A2AF57F4D00C5573A /* OCKTask+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B92232AF40AF500973C3D /* OCKTask+Custom.swift */; };
@@ -255,14 +241,6 @@
 		91AD924524A4C42E00925D4D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		91AD924724A4C42E00925D4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91AD924824A4C42E00925D4D /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		DF62051E2B0678E200C605B8 /* OCKAnyEvent+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OCKAnyEvent+Custom.swift"; sourceTree = "<group>"; };
-		DF6205212B067DB500C605B8 /* SurveyViewSynchronizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewSynchronizer.swift; sourceTree = "<group>"; };
-		DF6205242B067E6B00C605B8 /* Consent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consent.swift; sourceTree = "<group>"; };
-		DF6205272B067EF100C605B8 /* CheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
-		DF6205292B067F0100C605B8 /* Onboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.swift; sourceTree = "<group>"; };
-		DF62052B2B067F1500C605B8 /* RangeOfMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeOfMotion.swift; sourceTree = "<group>"; };
-		DF62052D2B067F2D00C605B8 /* Surveyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Surveyable.swift; sourceTree = "<group>"; };
-		DF62052F2B067F4300C605B8 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		DF9D6C162AF57EDF00C5573A /* CareKitTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareKitTaskView.swift; sourceTree = "<group>"; };
 		DF9D6C182AF57F1A00C5573A /* CareKitTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareKitTaskViewModel.swift; sourceTree = "<group>"; };
 		E72B2C06226939E3009A9438 /* OCKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,7 +259,6 @@
 			files = (
 				70202EC12807333900CF73FB /* CareKit in Frameworks */,
 				918FDEAF271B3F8F0045A0EF /* ParseCareKit in Frameworks */,
-				DF62051D2B0677CF00C605B8 /* ResearchKit in Frameworks */,
 				70202EC52807333A00CF73FB /* CareKitUI in Frameworks */,
 				703616FF29CA194900B50BC5 /* CareKitUtilities in Frameworks */,
 				708542F9276687F90029E888 /* HealthKit.framework in Frameworks */,
@@ -339,7 +316,6 @@
 			isa = PBXGroup;
 			children = (
 				E7C37848228F887800E982D8 /* TipView.swift */,
-				DF6205212B067DB500C605B8 /* SurveyViewSynchronizer.swift */,
 			);
 			path = CustomCards;
 			sourceTree = "<group>";
@@ -365,8 +341,6 @@
 		703088772582727500FFABB6 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				DF6205262B067EA800C605B8 /* Surveys */,
-				DF6205232B067E3A00C605B8 /* Onboarding */,
 				70221F2728D7809800971195 /* MainTabView.swift */,
 				7036E4D2256EBE35006E9A3C /* MainView.swift */,
 				70308878258272CD00FFABB6 /* Care */,
@@ -524,7 +498,6 @@
 				7083A855279CA40A00B3832E /* PCKUtility.swift */,
 				276B92232AF40AF500973C3D /* OCKTask+Custom.swift */,
 				276B92252AF40B1900973C3D /* OCKHealthKitTask+Custom.swift */,
-				DF62051E2B0678E200C605B8 /* OCKAnyEvent+Custom.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -573,26 +546,6 @@
 				91AD924524A4C42E00925D4D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		DF6205232B067E3A00C605B8 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				DF6205242B067E6B00C605B8 /* Consent.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		DF6205262B067EA800C605B8 /* Surveys */ = {
-			isa = PBXGroup;
-			children = (
-				DF6205272B067EF100C605B8 /* CheckIn.swift */,
-				DF6205292B067F0100C605B8 /* Onboard.swift */,
-				DF62052B2B067F1500C605B8 /* RangeOfMotion.swift */,
-				DF62052D2B067F2D00C605B8 /* Surveyable.swift */,
-				DF62052F2B067F4300C605B8 /* Survey.swift */,
-			);
-			path = Surveys;
 			sourceTree = "<group>";
 		};
 		DF9D6C152AF57EC200C5573A /* CAreKitTaskView */ = {
@@ -711,7 +664,6 @@
 				70202EC22807333900CF73FB /* CareKitFHIR */,
 				70202EC42807333A00CF73FB /* CareKitUI */,
 				703616FE29CA194900B50BC5 /* CareKitUtilities */,
-				DF62051C2B0677CF00C605B8 /* ResearchKit */,
 			);
 			productName = CareKitDemoApp;
 			productReference = E72B2C06226939E3009A9438 /* OCKSample.app */;
@@ -754,7 +706,6 @@
 				918FDEAD271B3F8F0045A0EF /* XCRemoteSwiftPackageReference "ParseCareKit" */,
 				70202EBF2807333900CF73FB /* XCRemoteSwiftPackageReference "CareKit" */,
 				703616FD29CA194900B50BC5 /* XCRemoteSwiftPackageReference "CareKitUtilities" */,
-				DF62051B2B0677CF00C605B8 /* XCRemoteSwiftPackageReference "ResearchKit" */,
 			);
 			productRefGroup = E72B2C07226939E3009A9438 /* Products */;
 			projectDirPath = "";
@@ -844,7 +795,6 @@
 				DF9D6C1A2AF57F4D00C5573A /* OCKTask+Custom.swift in Sources */,
 				7099D20029E98D900037CD8E /* AppError.swift in Sources */,
 				70A98D63278A268B009B58F2 /* ColorStyler.swift in Sources */,
-				DF6205342B06830600C605B8 /* Onboard.swift in Sources */,
 				918FDEB8271B49060045A0EF /* Logger.swift in Sources */,
 				91AD923B24A4C42D00925D4D /* CareView.swift in Sources */,
 				70F921A927CA9A4000368CEC /* CustomStylerKey.swift in Sources */,
@@ -859,10 +809,8 @@
 				7075152028DE1BB400A57A0C /* LoginView.swift in Sources */,
 				70F921B227CAC16E00368CEC /* RemoteSessionDelegate.swift in Sources */,
 				70221F2F28D7CDE400971195 /* AppDelegate+ParseRemoteDelegate.swift in Sources */,
-				DF6205332B06830100C605B8 /* CheckIn.swift in Sources */,
 				7083A857279CA40F00B3832E /* PCKUtility.swift in Sources */,
 				91AD923924A4C42D00925D4D /* OCKWatchSampleApp.swift in Sources */,
-				DF6205322B0682F300C605B8 /* Surveyable.swift in Sources */,
 				70F03AA627860B2500E5AFB4 /* OCKPatient+Parse.swift in Sources */,
 				70221F3828D8C0CB00971195 /* AppDelegateKey.swift in Sources */,
 				9103AA5227B8C913002C921E /* FontColorKey.swift in Sources */,
@@ -873,14 +821,12 @@
 				7099D20929E98E200037CD8E /* UserType.swift in Sources */,
 				918FDEB9271B493A0045A0EF /* Installation.swift in Sources */,
 				91AD923F24A4C42D00925D4D /* NotificationController.swift in Sources */,
-				DF6205352B06830A00C605B8 /* RangeOfMotion.swift in Sources */,
 				70CF66E528E1E74C00FAE977 /* TintColorFlipKey.swift in Sources */,
 				70C0D474279BA492003DA141 /* Utility.swift in Sources */,
 				27F2B2122B02030B00D7135E /* OCKHealthKitPassthroughStore.swift in Sources */,
 				91AD923D24A4C42D00925D4D /* AppDelegate.swift in Sources */,
 				91AD924124A4C42D00925D4D /* NotificationView.swift in Sources */,
 				7099D20C29E98E400037CD8E /* InstallationChannel.swift in Sources */,
-				DF6205312B0682E100C605B8 /* Survey.swift in Sources */,
 				70308886258273D400FFABB6 /* LoginViewModel.swift in Sources */,
 				70F921B127CAC16E00368CEC /* SessionDelegate.swift in Sources */,
 			);
@@ -890,17 +836,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF62052E2B067F2D00C605B8 /* Surveyable.swift in Sources */,
 				E7440E4F229477F7007AD30A /* CareViewController.swift in Sources */,
 				27F2B2032B01FA3600D7135E /* ProfileImageView.swift in Sources */,
 				918FDEB5271B40590045A0EF /* Installation.swift in Sources */,
 				DF9D6C192AF57F1A00C5573A /* CareKitTaskViewModel.swift in Sources */,
 				7099D20829E98E200037CD8E /* UserType.swift in Sources */,
-				DF6205282B067EF100C605B8 /* CheckIn.swift in Sources */,
 				70F921AC27CABE3000368CEC /* SessionDelegate.swift in Sources */,
 				70F0EFEA28C2EE6C0005B5A2 /* AppDelegateKey.swift in Sources */,
-				DF62051F2B0678E200C605B8 /* OCKAnyEvent+Custom.swift in Sources */,
-				DF6205222B067DB500C605B8 /* SurveyViewSynchronizer.swift in Sources */,
 				DF9D6C172AF57EDF00C5573A /* CareKitTaskView.swift in Sources */,
 				27F2B2052B01FD6B00D7135E /* CarePlanID.swift in Sources */,
 				7036E64025717F85006E9A3C /* Constants.swift in Sources */,
@@ -933,21 +875,17 @@
 				7036E4D3256EBE35006E9A3C /* MainView.swift in Sources */,
 				918FDEC5271B4EA70045A0EF /* StoreCoordinatorKey.swift in Sources */,
 				91693822271B897200A634ED /* Utility.swift in Sources */,
-				DF62052C2B067F1500C605B8 /* RangeOfMotion.swift in Sources */,
 				707CC718254DA91900116728 /* OCKLocalization.swift in Sources */,
 				E7C37849228F887800E982D8 /* TipView.swift in Sources */,
 				70077597252228E900EC0EDA /* User.swift in Sources */,
-				DF62052A2B067F0100C605B8 /* Onboard.swift in Sources */,
 				276B922D2AFA995A00973C3D /* CustomContactViewController.swift in Sources */,
 				7036E4C9256E1A6F006E9A3C /* ProfileView.swift in Sources */,
 				276B92222AF40ACE00973C3D /* CareKitCard.swift in Sources */,
 				7083A856279CA40A00B3832E /* PCKUtility.swift in Sources */,
-				DF6205252B067E6B00C605B8 /* Consent.swift in Sources */,
 				70F921AE27CABE7700368CEC /* RemoteSessionDelegate.swift in Sources */,
 				70F03A952786093B00E5AFB4 /* OCKHealthKitPassthroughStore.swift in Sources */,
 				7036E4BF256DA089006E9A3C /* LoginViewModel.swift in Sources */,
 				27F2B2012B01FA0A00D7135E /* ImagePicker.swift in Sources */,
-				DF6205302B067F4300C605B8 /* Survey.swift in Sources */,
 				7036E517256F2413006E9A3C /* ProfileViewModel.swift in Sources */,
 				7099D20B29E98E400037CD8E /* InstallationChannel.swift in Sources */,
 			);
@@ -1045,7 +983,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1283,7 +1221,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1390,14 +1328,6 @@
 				minimumVersion = "1.0.0-beta.3";
 			};
 		};
-		DF62051B2B0677CF00C605B8 /* XCRemoteSwiftPackageReference "ResearchKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/StanfordBDHG/ResearchKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.20;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1440,11 +1370,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 918FDEAD271B3F8F0045A0EF /* XCRemoteSwiftPackageReference "ParseCareKit" */;
 			productName = ParseCareKit;
-		};
-		DF62051C2B0677CF00C605B8 /* ResearchKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DF62051B2B0677CF00C605B8 /* XCRemoteSwiftPackageReference "ResearchKit" */;
-			productName = ResearchKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

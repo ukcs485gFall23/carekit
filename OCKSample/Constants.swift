@@ -40,5 +40,4 @@ enum Constants {
     static let userTypeKey = "userType"
     static let appName = "ParseCareKitSample"
     static let card = "card"
-    static let survey = "survey"
 }
