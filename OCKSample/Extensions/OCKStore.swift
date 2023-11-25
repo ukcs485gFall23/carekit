@@ -152,17 +152,17 @@ extension OCKStore {
                                interval: DateComponents(day: 2))
         ])
         /*
-               xTODO: You need to tie an OCPatient
+               xTODO: You need to tie an OCPatient and CarePlan to these tasks,
                */
         var doxylamine = OCKTask(id: TaskID.doxylamine,
                                  title: "Take Doxylamine",
                                  carePlanUUID: nil,
                                  schedule: schedule)
-        doxylamine.instructions = "Take 25mg of doxylamine when you experience water."
+        doxylamine.instructions = "Take 25mg of doxylamine when you experience nausea."
         doxylamine.asset = "pills.fill"
         doxylamine.card = .checklist
 
-        let waterSchedule = OCKSchedule(composing: [
+        let nauseaSchedule = OCKSchedule(composing: [
             OCKScheduleElement(start: beforeBreakfast,
                                end: nil,
                                interval: DateComponents(day: 1),
@@ -170,14 +170,14 @@ extension OCKStore {
                                targetValues: [], duration: .allDay)
             ])
 
-        var water = OCKTask(id: TaskID.water,
-                             title: "Track your Water intake",
+        var nausea = OCKTask(id: TaskID.nausea,
+                             title: "Track your nausea",
                              carePlanUUID: nil,
-                             schedule: waterSchedule)
-        water.impactsAdherence = false
-        water.instructions = "Tap the button anytime you drink water."
-        water.asset = "water"
-        water.card = .button
+                             schedule: nauseaSchedule)
+        nausea.impactsAdherence = false
+        nausea.instructions = "Tap the button below anytime you experience nausea."
+        nausea.asset = "bed.double"
+        nausea.card = .button
 
         let kegelElement = OCKScheduleElement(start: beforeBreakfast,
                                               end: nil,
@@ -203,7 +203,7 @@ extension OCKStore {
         stretch.asset = "figure.walk"
         stretch.card = .instruction
 
-        try await addTasksIfNotPresent([water, doxylamine, kegels, stretch])
+        try await addTasksIfNotPresent([nausea, doxylamine, kegels, stretch])
 
         var contact1 = OCKContact(id: "jane",
                                   givenName: "Jane",

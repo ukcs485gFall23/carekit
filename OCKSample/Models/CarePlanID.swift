@@ -16,6 +16,4 @@ enum CarePlanID: String, CaseIterable, Identifiable {
     case checkIn = "check In"
     case productivity = "productivity"
     case diet = "diet"
-    case takeAWalk = ""
-    case doxylamine = "doxylamine"
 }
