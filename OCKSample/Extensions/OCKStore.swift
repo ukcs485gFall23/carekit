@@ -221,6 +221,7 @@ extension OCKStore {
         stretch.asset = "figure.walk"
         stretch.card = .instruction
 
+        let carePlanUUIDs = try await Self.getCarePlanUUIDs()
         try await addTasksIfNotPresent([nausea, doxylamine, kegels, stretch])
         try await addOnboardingTask(carePlanUUIDs[.health])
         try await addSurveyTasks(carePlanUUIDs[.checkIn])
