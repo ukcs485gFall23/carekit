@@ -12,7 +12,6 @@ import HealthKit
 import os.log
 
 extension OCKHealthKitPassthroughStore {
-
     func addTasksIfNotPresent(_ tasks: [OCKHealthKitTask]) async throws {
         let tasksToAdd = tasks
         let taskIdsToAdd = tasksToAdd.compactMap { $0.id }
@@ -42,9 +41,6 @@ extension OCKHealthKitPassthroughStore {
         }
     }
 
-    /*
-         xTODO: You need to tie an OCPatient
-        */
         func populateSampleData(_ patientUUID: UUID? = nil) async throws {
 
         let schedule = OCKSchedule.dailyAtTime(
@@ -58,10 +54,12 @@ extension OCKHealthKitPassthroughStore {
                      are trying to copy the method to this file, you are using the code incorrectly. Be
                      sure to understand the difference between a type method and instance method.
                      */
+        let carePlanUUIDs = try await OCKStore.getCarePlanUUIDs() // type method
+
         var steps = OCKHealthKitTask(
             id: TaskID.steps,
             title: "Steps",
-            carePlanUUID: nil,
+            carePlanUUID: carePlanUUIDs[.steps],
             schedule: schedule,
             healthKitLinkage: OCKHealthKitLinkage(
                 quantityIdentifier: .stepCount,
