@@ -10,8 +10,7 @@ import Foundation
 
 // Done hw5
 enum CarePlanID: String, CaseIterable, Identifiable {
-    var id: String {
-        return UUID().uuidString}
+    var id: Self { self }
     case health = "health"
     case checkIn = "check In"
     case productivity = "productivity"

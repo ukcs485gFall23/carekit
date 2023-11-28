@@ -106,6 +106,14 @@ class CustomContactViewController: OCKListViewController {
             Logger.contact.error("Could not get logged in personUUID")
             return
         }
+        /*
+                 TODOx: You should not show any contacts if your user has not completed the
+                 onboarding task yet. There was a method added recently in Utility.swift to
+                 assist with this. Use this method here and write a comment and state if
+                 it's an "instance method" or "type method". If you are trying to copy the
+                 method to this file, you are using the code incorrectly. Be
+                 sure to understand the difference between a type method and instance method.
+                 */
 
         guard let contacts = contacts else {
             Logger.contact.error("No contacts to display")
