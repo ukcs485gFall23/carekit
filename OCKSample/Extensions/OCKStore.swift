@@ -152,8 +152,8 @@ extension OCKStore {
 
     // Adds tasks and contacts into the store
     func populateSampleData(_ patientUUID: UUID? = nil) async throws {
-
-            try await populateCarePlans(patientUUID: patientUUID)
+        let carePlanUUIDs = try await Self.getCarePlanUUIDs()
+        try await populateCarePlans(patientUUID: patientUUID)
 
         let thisMorning = Calendar.current.startOfDay(for: Date())
         guard let aFewDaysAgo = Calendar.current.date(byAdding: .day, value: -4, to: thisMorning),
@@ -172,9 +172,6 @@ extension OCKStore {
                                end: nil,
                                interval: DateComponents(day: 2))
         ])
-        /*
-               xTODO: You need to tie an OCPatient and CarePlan to these tasks,
-               */
         var doxylamine = OCKTask(id: TaskID.doxylamine,
                                  title: "Take Doxylamine",
                                  carePlanUUID: nil,
@@ -193,7 +190,7 @@ extension OCKStore {
 
         var nausea = OCKTask(id: TaskID.nausea,
                              title: "Track your nausea",
-                             carePlanUUID: nil,
+                             carePlanUUID: carePlanUUIDs[.nausea],
                              schedule: nauseaSchedule)
         nausea.impactsAdherence = false
         nausea.instructions = "Tap the button below anytime you experience nausea."
@@ -206,7 +203,7 @@ extension OCKStore {
         let kegelSchedule = OCKSchedule(composing: [kegelElement])
         var kegels = OCKTask(id: TaskID.kegels,
                              title: "Kegel Exercises",
-                             carePlanUUID: nil,
+                             carePlanUUID: carePlanUUIDs[.kegle],
                              schedule: kegelSchedule)
         kegels.impactsAdherence = true
         kegels.instructions = "Perform kegel exercies"
@@ -218,7 +215,7 @@ extension OCKStore {
         let stretchSchedule = OCKSchedule(composing: [stretchElement])
         var stretch = OCKTask(id: TaskID.stretch,
                               title: "Stretch",
-                              carePlanUUID: nil,
+                              carePlanUUID: carePlanUUIDs[.stretch],
                               schedule: stretchSchedule)
         stretch.impactsAdherence = true
         stretch.asset = "figure.walk"
@@ -231,7 +228,7 @@ extension OCKStore {
         var contact1 = OCKContact(id: "jane",
                                   givenName: "Jane",
                                   familyName: "Daniels",
-                                  carePlanUUID: nil)
+                                  carePlanUUID: carePlanUUIDs[.input])
         contact1.asset = "JaneDaniels"
         contact1.title = "Family Practice Doctor"
         contact1.role = "Dr. Daniels is a family practice doctor with 8 years of experience."

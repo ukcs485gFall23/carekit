@@ -44,5 +44,4 @@ extension OCKTask {
                 userInfo?[Constants.survey] = newValue.rawValue
             }
         }
-
 }

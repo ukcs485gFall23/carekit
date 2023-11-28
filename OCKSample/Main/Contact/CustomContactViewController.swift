@@ -74,6 +74,7 @@ class CustomContactViewController: OCKListViewController {
     @objc private func presentContactsListViewController() {
 
         let contactPicker = CNContactPickerViewController()
+        contactPicker.view.tintColor = self.view.tintColor
         contactPicker.delegate = self
         contactPicker.predicateForEnablingContact = NSPredicate(
           format: "phoneNumbers.@count > 0")
@@ -119,22 +120,22 @@ class CustomContactViewController: OCKListViewController {
             Logger.contact.error("No contacts to display")
             return
         }
+        if await Utility.checkIfOnboardingIsComplete() {
+            let filterdContacts = contacts.filter { convertedContact in
+                Logger.contact.info("Contact filtered: \(convertedContact.id)")
+                if convertedContact.id == personUUIDString {
+                    return false
+                } else {
+                    return true
+                }
+            }
 
-        let filterdContacts = contacts.filter { convertedContact in
-                     Logger.contact.info("Contact filtered: \(convertedContact.id)")
-                     if convertedContact.id == personUUIDString {
-                         return false
-                     } else {
-                         return true
-                     }
-                 }
-
-        self.clearAndKeepSearchBar()
-        // Map all filtered contacts to a direct contact.
-        self.allContacts = filterdContacts.compactMap { $0.result as? OCKContact }
-        self.displayContacts(self.allContacts)
+            self.clearAndKeepSearchBar()
+            // Map all filtered contacts to a direct contact.
+            self.allContacts = filterdContacts.compactMap { $0.result as? OCKContact }
+            self.displayContacts(self.allContacts)
+        }
     }
-
     @MainActor
     func displayContacts(_ contacts: [OCKAnyContact]) {
         var query = ContactViewModel.contactQuery()

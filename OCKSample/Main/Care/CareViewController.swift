@@ -151,71 +151,73 @@ class CareViewController: OCKDailyPageViewController {
      */
     override func dailyPageViewController(_ dailyPageViewController: OCKDailyPageViewController,
                                           prepare listViewController: OCKListViewController, for date: Date) {
+
         Task {
 
-                    guard await Utility.checkIfOnboardingIsComplete() else {
-                        let onboardSurvey = Onboard()
-                        var query = OCKEventQuery(for: Date())
-                        query.taskIDs = [Onboard.identifier()]
-                        let onboardCard = OCKSurveyTaskViewController(eventQuery: query,
-                                                                      store: self.store,
-                                                                      survey: onboardSurvey.createSurvey(),
-                                                                      extractOutcome: { _ in
-                            [OCKOutcomeValue(Date())]
+            guard await Utility.checkIfOnboardingIsComplete() else {
+                let onboardSurvey = Onboard()
+                var query = OCKEventQuery(for: Date())
+                query.taskIDs = [Onboard.identifier()]
+                let onboardCard = OCKSurveyTaskViewController(eventQuery: query,
+                                                              store: self.store,
+                                                              survey: onboardSurvey.createSurvey(),
+                                                              extractOutcome: { _ in [OCKOutcomeValue(Date())] })
+                onboardCard.surveyDelegate = self
+
+                listViewController.clear()
+                listViewController.appendViewController(
+                    onboardCard,
+                    animated: false
+                )
+                self.isLoading = false
+                return
+            }
+
+            do {
+                let tasks = try await fetchTasks(on: date)
+                let isCurrentDay = Calendar.current.isDate(date, inSameDayAs: Date())
+                let taskCards = tasks.compactMap {
+                    let cards = self.taskViewController(for: $0,
+                                                        on: date)
+                    cards?.forEach {
+                        if let carekitView = $0.view as? OCKView {
+                            carekitView.customStyle = CustomStylerKey.defaultValue
                         }
-                        )
-                        onboardCard.surveyDelegate = self
-
-                        listViewController.clear()
-                        listViewController.appendViewController(
-                            onboardCard,
-                            animated: false
-                        )
-                        self.isLoading = false
-                        return
-            }
-
-        do {
-                    let tasks = try await fetchTasks(on: date)
-                    let isCurrentDay = Calendar.current.isDate(date, inSameDayAs: Date())
-            let taskCards = tasks.compactMap {
-                let cards = self.taskViewController(for: $0,
-                                                    on: date)
-                cards?.forEach {
-                    if let carekitView = $0.view as? OCKView {
-                        carekitView.customStyle = CustomStylerKey.defaultValue
+                        $0.view.isUserInteractionEnabled = isCurrentDay
+                        $0.view.alpha = !isCurrentDay ? 0.4 : 1.0
                     }
-                    $0.view.isUserInteractionEnabled = isCurrentDay
-                    $0.view.alpha = !isCurrentDay ? 0.4 : 1.0
+                    return cards
                 }
-                return cards
-            }
-            // Only show the tip view on the current date
-                            listViewController.clear()
-                            if isCurrentDay {
-                                if Calendar.current.isDate(date, inSameDayAs: Date()) {
-                                    // Add a non-CareKit view into the list
-                                    let tipTitle = "Benefits of exercising"
-                                    let tipText = "Learn how activity can promote a healthy pregnancy."
-                                    let tipView = TipView()
-                                    tipView.headerView.titleLabel.text = tipTitle
-                                    tipView.headerView.detailLabel.text = tipText
-                                    tipView.imageView.image = UIImage(named: "exercise.jpg")
-                                    tipView.customStyle = CustomStylerKey.defaultValue
-                                    listViewController.appendView(tipView, animated: false)
-                                }
-                            }
 
-                            taskCards.forEach { (cards: [UIViewController]) in
-                        cards.forEach {
+                // Only show the tip view on the current date
+                listViewController.clear()
+                if isCurrentDay {
+                    if Calendar.current.isDate(date, inSameDayAs: Date()) {
+                        // Add a non-CareKit view into the list
+                        let tipTitle = "Benefits of exercising"
+                        let tipText = "Learn how activity can promote a healthy pregnancy."
+                        let tipView = TipView()
+                        tipView.headerView.titleLabel.text = tipTitle
+                        tipView.headerView.detailLabel.text = tipText
+                        tipView.imageView.image = UIImage(named: "exercise.jpg")
+                        tipView.customStyle = CustomStylerKey.defaultValue
+                        listViewController.appendView(tipView, animated: false)
+                    }
+                }
+
+                taskCards.forEach { (cards: [UIViewController]) in
+                    cards.forEach {
                         listViewController.appendViewController($0, animated: false)
                     }
                 }
-        } catch {
-            Logger.feed.error("Could not fetch tasks: \(error)")
+            } catch {
+                Logger.feed.error("Could not fetch tasks: \(error)")
             }
+
             self.isLoading = false
+
         }
+
     }
 
     private func getStoreFetchRequestEvent(for taskId: String) -> CareStoreFetchedResult<OCKAnyEvent>? {
@@ -331,20 +333,20 @@ class CareViewController: OCKDailyPageViewController {
             return [linkView.formattedHostingController()]
 
         case .survey:
-                    guard let surveyTask = task as? OCKTask else {
-                        Logger.feed.error("Can only use a survey for an \"OCKTask\", not \(task.id)")
-                        return nil
-                    }
+            guard let surveyTask = task as? OCKTask else {
+                Logger.feed.error("Can only use a survey for an \"OCKTask\", not \(task.id)")
+                return nil
+            }
 
-                    let surveyCard = OCKSurveyTaskViewController(
-                        eventQuery: query,
-                        store: self.store,
-                        survey: surveyTask.survey.type().createSurvey(),
-                        viewSynchronizer: SurveyViewSynchronizer(),
-                        extractOutcome: surveyTask.survey.type().extractAnswers
-                    )
-                    surveyCard.surveyDelegate = self
-                    return [surveyCard]
+            let surveyCard = OCKSurveyTaskViewController(
+                eventQuery: query,
+                store: self.store,
+                survey: surveyTask.survey.type().createSurvey(),
+                viewSynchronizer: SurveyViewSynchronizer(),
+                extractOutcome: surveyTask.survey.type().extractAnswers
+            )
+            surveyCard.surveyDelegate = self
+            return [surveyCard]
 
         default:
             // Check if a healthKit task
@@ -361,7 +363,6 @@ class CareViewController: OCKDailyPageViewController {
                 .careKitStyle(CustomStylerKey.defaultValue)
 
             return [view.formattedHostingController()]
-
         }
     }
 
@@ -370,10 +371,11 @@ class CareViewController: OCKDailyPageViewController {
         query.excludesTasksWithNoEvents = true
         let tasks = try await store.fetchAnyTasks(query: query)
 
-                // Remove onboarding tasks from array
-                let filteredTasks = tasks.filter { $0.id != Onboard.identifier() }
-                return filteredTasks
+        // Remove onboarding tasks from array
+        let filteredTasks = tasks.filter { $0.id != Onboard.identifier() }
+        return filteredTasks
     }
+
 }
 
 private extension View {
