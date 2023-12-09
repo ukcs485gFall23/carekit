@@ -29,9 +29,33 @@ struct MainTabView: View {
                 }
                 .tag(0)
 
-            ContactView()
+            ProgressView()
                 .tabItem {
                     if selectedTab == 1 {
+                        Image(systemName: "hourglass.bottomhalf.filled")
+                                                    .renderingMode(.template)
+                                            } else {
+                                                Image(systemName: "hourglass.tophalf.filled")
+                                                    .renderingMode(.template)
+                                            }
+                                        }
+                                        .tag(1)
+
+                                    InsightsView()
+                                        .tabItem {
+                                            if selectedTab == 2 {
+                                                Image(systemName: "chart.pie.fill")
+                                                    .renderingMode(.template)
+                                            } else {
+                                                Image(systemName: "chart.pie")
+                                                    .renderingMode(.template)
+                                            }
+                                        }
+                                        .tag(2)
+
+                                    ContactView()
+                                        .tabItem {
+                                            if selectedTab == 3 {
                         Image("phone.bubble.left.fill")
                             .renderingMode(.template)
                     } else {
@@ -39,11 +63,11 @@ struct MainTabView: View {
                             .renderingMode(.template)
                     }
                 }
-                .tag(1)
+                .tag(3)
 
             ProfileView(loginViewModel: loginViewModel)
                 .tabItem {
-                    if selectedTab == 2 {
+                    if selectedTab == 4 {
                         Image("connect-filled")
                             .renderingMode(.template)
                     } else {
@@ -51,7 +75,7 @@ struct MainTabView: View {
                             .renderingMode(.template)
                     }
                 }
-                .tag(2)
+                .tag(4)
         }
     }
 }

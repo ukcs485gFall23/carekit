@@ -31,12 +31,12 @@
 import CareKit
 import CareKitStore
 import CareKitUI
+import CareKitUtilities
 import os.log
 import ResearchKit
 import SwiftUI
 import UIKit
 
-// swiftlint:disable type_body_length
 @MainActor
 class CareViewController: OCKDailyPageViewController {
 
@@ -194,16 +194,37 @@ class CareViewController: OCKDailyPageViewController {
                 if isCurrentDay {
                     if Calendar.current.isDate(date, inSameDayAs: Date()) {
                         // Add a non-CareKit view into the list
-                        let tipTitle = "Benefits of exercising"
+                        /*let tipTitle = "Benefits of exercising"
                         let tipText = "Learn how activity can promote a healthy pregnancy."
                         let tipView = TipView()
                         tipView.headerView.titleLabel.text = tipTitle
                         tipView.headerView.detailLabel.text = tipText
                         tipView.imageView.image = UIImage(named: "exercise.jpg")
                         tipView.customStyle = CustomStylerKey.defaultValue
-                        listViewController.appendView(tipView, animated: false)
+                         listViewController.appendView(tipView, animated: false)
+                        */
+                        // xTODO: 5 - Need to use correct initializer instead of setting properties
+
+                        let customFeaturedView = CustomFeaturedContentViewController()
+                        // swiftlint:disable:next line_length
+                        customFeaturedView.url = URL(string: "https://www.uky.edu/hr/work-life-and-well-being/physical-activity")
+                        customFeaturedView.imageView.image = UIImage(named: "exercise.jpg")
+                        // customFeaturedView.label.text = tipTitle
+                        customFeaturedView.label.textColor = .white
+                        customFeaturedView.customStyle = CustomStylerKey.defaultValue
+                        listViewController.appendView(customFeaturedView, animated: false)
+
                     }
                 }
+
+                // Added custom card.
+                let newCustomCard = CustomCardView()
+                    .careKitStyle(CustomStylerKey.defaultValue)
+                let newCustomCardViewController = newCustomCard.formattedHostingController()
+                listViewController.appendViewController(
+                    newCustomCardViewController,
+                    animated: false
+                )
 
                 taskCards.forEach { (cards: [UIViewController]) in
                     cards.forEach {
@@ -246,7 +267,23 @@ class CareViewController: OCKDailyPageViewController {
             guard let event = getStoreFetchRequestEvent(for: task.id) else {
                 return nil
             }
-            let view = NumericProgressTaskView<_NumericProgressTaskViewHeader>(event: event, numberFormatter: .none)
+            let view = NumericProgressTaskView<InformationHeaderView>(event: event, numberFormatter: .none)
+                .careKitStyle(CustomStylerKey.defaultValue)
+
+            return [view.formattedHostingController()]
+
+        case .custom:
+            /*
+             xTODO: Example of showing how to use your custom card. This
+             should be placed correctly for the final to receive credit.
+             This card currently only shows when numericProgress is selected,
+             you should add the card to the switch statement properly to
+             make it show on purpose when the card type is selected.
+            */
+            guard let event = getStoreFetchRequestEvent(for: task.id) else {
+                return nil
+            }
+            let view = NumericProgressTaskView<InformationHeaderView>(event: event, numberFormatter: .none)
                 .careKitStyle(CustomStylerKey.defaultValue)
 
             return [view.formattedHostingController()]
@@ -270,40 +307,6 @@ class CareViewController: OCKDailyPageViewController {
                                                    store: self.store)]
 
         case .button:
-            var cards = [UIViewController]()
-            // dynamic gradient colors
-            let nauseaGradientStart = TintColorFlipKey.defaultValue
-            let nauseaGradientEnd = TintColorKey.defaultValue
-            let taskTitle = task.title ?? ""
-            // Create a plot comparing nausea to medication adherence.
-            let nauseaDataSeries = OCKDataSeriesConfiguration(
-                taskID: task.id,
-                legendTitle: taskTitle,
-                gradientStartColor: nauseaGradientStart,
-                gradientEndColor: nauseaGradientEnd,
-                markerSize: 10) { event in
-                    event.computeProgress(by: .summingOutcomeValues)
-                }
-
-            let doxylamineDataSeries = OCKDataSeriesConfiguration(
-                taskID: task.id,
-                legendTitle: TaskID.doxylamine,
-                gradientStartColor: .systemGray2,
-                gradientEndColor: .systemGray,
-                markerSize: 10) { event in
-                    event.computeProgress(by: .summingOutcomeValues)
-                }
-
-            let insightsCard = OCKCartesianChartViewController(
-                plotType: .bar,
-                selectedDate: date,
-                configurations: [nauseaDataSeries, doxylamineDataSeries],
-                store: self.store)
-
-            insightsCard.typedView.headerView.titleLabel.text = "Nausea & Doxylamine Intake"
-            insightsCard.typedView.headerView.detailLabel.text = "This Week"
-            insightsCard.typedView.headerView.accessibilityLabel = "Nausea & Doxylamine Intake, This Week"
-            cards.append(insightsCard)
 
             /*
              Also create a card that displays a single event.
@@ -312,8 +315,7 @@ class CareViewController: OCKDailyPageViewController {
              */
             let nauseaCard = OCKButtonLogTaskViewController(query: query,
                                                             store: self.store)
-            cards.append(nauseaCard)
-            return cards
+            return [nauseaCard]
 
         case .labeledValue:
 
