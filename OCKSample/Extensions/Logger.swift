@@ -28,4 +28,6 @@ extension Logger {
                                                      category: "OCKHealthKitPassthroughStore+Extension")
     static let careKitTask = Logger(subsystem: subsystem,
                                         category: "CareKitTask")
+    static let customCardTask = Logger(subsystem: subsystem,
+                                        category: "CustomCardTask")
 }

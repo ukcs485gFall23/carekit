@@ -85,6 +85,12 @@ struct CareKitTaskView: View {
 
 }
 
-#Preview {
-    CareKitTaskView()
+// Only need to make this change for older Xcode, otherwise use #Preview.
+struct CareKitTaskView_Previews: PreviewProvider {
+    static var previews: some View {
+        CareKitTaskView()
+            .accentColor(Color(TintColorKey.defaultValue))
+            .environment(\.appDelegate, AppDelegate())
+            .environment(\.careStore, Utility.createPreviewStore())
+    }
 }

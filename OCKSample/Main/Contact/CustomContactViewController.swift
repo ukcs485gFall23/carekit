@@ -108,7 +108,7 @@ class CustomContactViewController: OCKListViewController {
             return
         }
         /*
-                 TODOx: You should not show any contacts if your user has not completed the
+                 TODOy: You should not show any contacts if your user has not completed the
                  onboarding task yet. There was a method added recently in Utility.swift to
                  assist with this. Use this method here and write a comment and state if
                  it's an "instance method" or "type method". If you are trying to copy the
