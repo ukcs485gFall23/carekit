@@ -13,7 +13,7 @@ import Foundation
 class ProgressViewModel: ObservableObject {
 
     static func queryEvents() -> OCKEventQuery {
-        // xTODO: Constrain your query to your specific needs
+        // yTODO: Constrain your query to your specific needs
         var query = OCKEventQuery(for: Date())
         // Add any taskID you want to show on a card here, these are only examples.
         query.taskIDs = [TaskID.steps, TaskID.doxylamine]

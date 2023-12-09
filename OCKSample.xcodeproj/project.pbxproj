@@ -123,6 +123,8 @@
 		DF5826122B24E27A001C39B7 /* InsightsViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5826112B24E27A001C39B7 /* InsightsViewContoller.swift */; };
 		DF5826152B24E3BC001C39B7 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5826142B24E3BC001C39B7 /* ProgressView.swift */; };
 		DF5826172B24E3EA001C39B7 /* ProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5826162B24E3EA001C39B7 /* ProgressViewModel.swift */; };
+		DF5826192B24F0DB001C39B7 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5826182B24F0DB001C39B7 /* Graphs.swift */; };
+		DF58261A2B24FAE0001C39B7 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5826182B24F0DB001C39B7 /* Graphs.swift */; };
 		DF62051D2B0677CF00C605B8 /* ResearchKit in Frameworks */ = {isa = PBXBuildFile; productRef = DF62051C2B0677CF00C605B8 /* ResearchKit */; };
 		DF62051F2B0678E200C605B8 /* OCKAnyEvent+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF62051E2B0678E200C605B8 /* OCKAnyEvent+Custom.swift */; };
 		DF6205222B067DB500C605B8 /* SurveyViewSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6205212B067DB500C605B8 /* SurveyViewSynchronizer.swift */; };
@@ -276,6 +278,7 @@
 		DF5826112B24E27A001C39B7 /* InsightsViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsViewContoller.swift; sourceTree = "<group>"; };
 		DF5826142B24E3BC001C39B7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		DF5826162B24E3EA001C39B7 /* ProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewModel.swift; sourceTree = "<group>"; };
+		DF5826182B24F0DB001C39B7 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		DF62051E2B0678E200C605B8 /* OCKAnyEvent+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OCKAnyEvent+Custom.swift"; sourceTree = "<group>"; };
 		DF6205212B067DB500C605B8 /* SurveyViewSynchronizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewSynchronizer.swift; sourceTree = "<group>"; };
 		DF6205272B067EF100C605B8 /* CheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
@@ -533,6 +536,7 @@
 				7099D1FD29E98D780037CD8E /* Parse */,
 				276B92212AF40ACE00973C3D /* CareKitCard.swift */,
 				27F2B2042B01FD6B00D7135E /* CarePlanID.swift */,
+				DF5826182B24F0DB001C39B7 /* Graphs.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -920,6 +924,7 @@
 				70F03AA627860B2500E5AFB4 /* OCKPatient+Parse.swift in Sources */,
 				70221F3828D8C0CB00971195 /* AppDelegateKey.swift in Sources */,
 				9103AA5227B8C913002C921E /* FontColorKey.swift in Sources */,
+				DF58261A2B24FAE0001C39B7 /* Graphs.swift in Sources */,
 				7099D20329E98DDF0037CD8E /* MainViewPath.swift in Sources */,
 				707CC719254DA91900116728 /* OCKLocalization.swift in Sources */,
 				7007759B252229C900EC0EDA /* User.swift in Sources */,
@@ -987,6 +992,7 @@
 				276B922B2AFA993100973C3D /* ContactViewModel.swift in Sources */,
 				7099D1FF29E98D900037CD8E /* AppError.swift in Sources */,
 				276B92242AF40AF500973C3D /* OCKTask+Custom.swift in Sources */,
+				DF5826192B24F0DB001C39B7 /* Graphs.swift in Sources */,
 				27F2B20C2B01FF0600D7135E /* MyContactView.swift in Sources */,
 				DF5826152B24E3BC001C39B7 /* ProgressView.swift in Sources */,
 				DF5826102B24E261001C39B7 /* InsightsView.swift in Sources */,
