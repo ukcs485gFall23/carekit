@@ -20,7 +20,7 @@ Add the public link to your YouTube or video posted elsewhere.
 -->
 To learn more about this application, watch the video below:
 
-[Demo video](https://youtu.be/_EWbdbzKg_A)
+[Demo video](https://youtu.be/dsxLTlx58jI)
 
 
 ### Designed for the following users
