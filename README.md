@@ -10,9 +10,9 @@ Give a short description on what your project accomplishes and what tools is use
 -->
 An example application of [CareKit](https://github.com/carekit-apple/CareKit)'s OCKSample synchronizing CareKit data to the Cloud via [ParseCareKit](https://github.com/netreconlab/ParseCareKit).
 
-Alpine Fitness is an app designed to aid someone in their workout routine. The goal of this applicaion is to give users an easy to use experience while doing their workout, so they do not have to worry about keeping track of what they have done or what they need to do next. This application is mainly using the CareKit and ResearchKit frameworks. 
+Geek-App is a CareKit-based health app designed specifically for computer programmers. It helps programmers to improve their physical and mental health by providing personalized recommendations, tracking their progress, and connecting them with a community of other programmers who are also working to improve their health.
 
-This application has the goal of allowing its users complete control over how they plan their workout with the ability to create tasks to be completed, access areas of the Health app's information such as height and weight, access the phone's contact information, and give insights into the user's weight and workout progession.
+
 
 ### Demo Video
 <!--
@@ -27,7 +27,11 @@ alt="Sample demo video" width="240" height="180" border="10" /></a>
 <!--
 Describe the types of users your app is designed for and who will benefit from your app.
 -->
-This app is designed for anyone who wishes to start getting into fitness or weight lifting. This app is designed to be a tool in aiding you to plan, keep track of, and complete your workout.
+Geek-App is for computer programmers who are concerned about their health and want to take steps to improve it. The app can benefit users in a number of ways, including:
+
+Improved physical health: Geek-App can help users to improve their physical health by providing personalized recommendations for exercise, nutrition, and sleep. The app can also track users' progress and help them to identify areas where they can improve.
+Improved mental health: Geek-App can help users to improve their mental health by providing them with a community of other programmers who are also working to improve their health. The app also includes features such as stress management and mood tracking.
+Increased motivation: Geek-App can help users to stay motivated by providing them with personalized goals, tracking their progress, and rewarding them for their achievements.
 <!--
 In addition, you can drop screenshots directly into your README file to add them to your README. Take these from your presentations.
 -->
@@ -39,7 +43,7 @@ link to each members respective GitHub profile
 -->
 Developed by: 
 - [Dr. Corey Baker](https://github.com/cbaker6) - `University of Kentucky`, `Computer Science Professor`
-- [Brandon Wever](https://github.com/brandon-wever) - `University of Kentucky`, `Computer Science`
+- [Elnoel Akwa](https://github.com/akwaed) - `University of Kentucky`, `Computer Engineering`
 
 ParseCareKit synchronizes the following entities to Parse tables/classes using [Parse-Swift](https://github.com/parse-community/Parse-Swift):
 
@@ -57,7 +61,7 @@ ParseCareKit synchronizes the following entities to Parse tables/classes using [
 What features were added by you, this should be descriptions of features added from the [Code](https://uk.instructure.com/courses/2030626/assignments/11151475) and [Demo](https://uk.instructure.com/courses/2030626/assignments/11151413) parts of the final. Feel free to add any figures that may help describe a feature. Note that there should be information here about how the OCKTask/OCKHealthTask's and OCKCarePlan's you added pertain to your app.
 -->
 ## Contributions/Features
-On the insights tab, there are 3 surveys that pertain to a user's taks and their related outcomes. Two of these graphs pertain to a user's response on built-in surveys that address a user's weight as well as a user's opinion of the difficulty of a workout they have completed. The third graph is a representation of the amount of exercises that the user has completed on a given day. OCKHealthKitTasks are also built into the application's funcitonality and pull data from the Health app on a user's phone to display current weight and height information. I have also created two new custom button types, the first of which is intended to let the user keep track of a weight they may have completed while doing a certain exercise. The second custom button type is a text input feature designed to be a sort of notepad for users to write out their thoughts, plans, or motivations while completing a workout. There is also added functionality to the profile tab, with the user having the ability to add their own custom OCKTasks and OCKHealthKitTasks, as well as being able to update their own profile and contact information.
+On the insights tab, there are 3 surveys that pertain to a user's taks and their related outcomes. Two of these graphs pertain to a user's response on built-in surveys that address a user's sleep as well as a user's opinion of their productivity levels. The third graph is a representation of the amount of alchool vs water they consume each week. OCKHealthKitTasks are also built into the application's funcitonality and pull data from the Health app on a user's phone to display current moveTime, standTime and alchool intake information. I have also created two new custom button types, the first of which is intended to let the user keep track of how much alchool they drink. The second custom button type is a text input feature designed to be a give the users puns to start their day happy. There is also added functionality to the profile tab, with the user having the ability to add their own custom OCKTasks and OCKHealthKitTasks, as well as being able to update their own profile and contact information.
 ## Final Checklist
 <!--
 This is from the checkist from the final [Code](https://uk.instructure.com/courses/2030626/assignments/11151475). You should mark completed items with an x and leave non-completed items empty
@@ -75,7 +79,7 @@ This is from the checkist from the final [Code](https://uk.instructure.com/cours
   - [x] Checklist - typically used with a OCKTask
   - [x] Button Log - typically used with a OCKTask
   - [ ] GridTaskView - typically used with a OCKTask
-  - [ ] NumericProgressTaskView (SwiftUI) - typically used with a OCKHealthKitTask
+  - [x] NumericProgressTaskView (SwiftUI) - typically used with a OCKHealthKitTask
   - [x] LabeledValueTaskView (SwiftUI) - typically used with a OCKHealthKitTask
 - [x] Add the LinkView (SwiftUI) card to your app
 - [x] Replace the current TipView with a class with CustomFeaturedContentView that subclasses OCKFeaturedContentView. This card should have an initializer which takes any link
@@ -84,22 +88,23 @@ This is from the checkist from the final [Code](https://uk.instructure.com/cours
 - [x] Add a new tab called "Insights" to MainTabView
 - [x] Replace current ContactView with Searchable contact view
 - [x] Change the ProfileView to use a Form view
-- [ ] Add at least two OCKCarePlan's and tie them to their respective OCKTask's and OCContact's 
+- [x] Add at least two OCKCarePlan's and tie them to their respective OCKTask's and OCContact's 
 
 ## Wishlist features
 <!--
 Describe at least 3 features you want to add in the future before releasing your app in the app-store
 -->
-1. Connecting multiple OCKCarePlans to different workout types and setting them to specific schedules. For example, this would have chest day on monday, legs on Tuesday, etc.
-2. Allowing multiple users to contact eachother through the contacts tab and allowing them to share information with eachother such as workouts, and personal data to track eachother's progess. This would be a major step toward tailoring this application to a more social-media style.
-3. Allowing users to create custom care plans, similar to the point 1. This could allow users the oppurtunity to create their own workouts with customized schedules, giving users more choice over what their workout schedule may look like.
-4. Tapping a third-party API that gave users the ability to create a specific exercise task - say bicep curls - and the API would provide a short video demonstration on how to correctly perform the exercise.
+1. 3rd party api to connect with forum based app like reddit and qoura
+2. Social features for friendly competition
+3. Ability to delete tasks
+4. Ability to import images into tasks
 
 ## Challenges faced while developing
 <!--
 Describe any challenges you faced with learning Swift, your baseline app, or adding features. You can describe how you overcame them.
 -->
-The biggest problem I faced during development, was allocating time to come to campus and use the university computers, as I do not personally own a Mac. Another large challenge I faced during development was navigating documentation related to problems I was experiencing. Often I would run into issues and searched possible fixes but often times Apple's documentation links were bad and there was a not of information pertaining to the situation I was in. Finally, the last problem I faced was working with a dynamic, multi-threaded application which I have not had a lot of experience working with in the past. This made me have to think very critically about problems before they arose, otherwise errors could persist on multiple builds and the only way to fix this issue was by cleaning my build folder and restarting XCode.
+The biggest problem I faced during development, was  navigating documentation related to problems I was experiencing. Often I would run into issues and searched possible fixes but often times Apple's documentation links were bad and there was a not of information pertaining to the situation I was in. Also, tGetting the healthcareLinkage app to preview on my default screen seemed to be and issue
+
 ## Setup Your Parse Server
 
 ### Heroku

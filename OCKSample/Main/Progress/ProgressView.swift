@@ -28,6 +28,7 @@ struct ProgressView: View {
                             .website(
                                 "https://www.quora.com/topic/Ergonomics",
                                 title: "Quora"
+
                             )
                         ]
                     )
@@ -36,27 +37,20 @@ struct ProgressView: View {
 
                         // Example of using another CareKitUIView.
                         NumericProgressTaskView<InformationHeaderView>(event: stepEvent)
-
-                        // Example of using another CareKitUIView.
-                        LabeledValueTaskView<InformationHeaderView>(event: stepEvent)
                     }
 
                     if let standingEvent = getEvent(for: TaskID.standingTime) {
                         // Example of using another CareKitUIView.
-                        SimpleTaskView<InformationHeaderView>(event: standingEvent)
-
+                        NumericProgressTaskView<InformationHeaderView>(event: standingEvent)
+                    }
+                    if let alchoolIntake = getEvent(for: TaskID.alchoolIntake) {
                         // Example of using another CareKitUIView.
-                        InstructionsTaskView<InformationHeaderView>(event: standingEvent)
+                        NumericProgressTaskView<InformationHeaderView>(event: alchoolIntake)
 
-                        // Use our customcard view with text.
-                        CustomCardTaskView(event: standingEvent)
                     }
 
-                    // Use our customcard view with text.
-                    CustomCardView()
+                    AlcoholIntakeCard()
 
-                    // Example of basic SwiftUI view
-                    Text("Hello, World!")
                 }
                 .padding()
             }
