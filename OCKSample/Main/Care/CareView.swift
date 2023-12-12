@@ -17,7 +17,6 @@ import UIKit
 struct CareView: UIViewControllerRepresentable {
     private static var query: OCKEventQuery {
         var query = OCKEventQuery(for: Date())
-        query.taskIDs = [TaskID.steps]
         return query
     }
     @Environment(\.appDelegate) private var appDelegate
