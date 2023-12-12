@@ -42,7 +42,7 @@ extension AppDelegate: UIApplicationDelegate {
                         try await setupRemotes()
                     }
                 } catch {
-                    Logger.appDelegate.error("User is not loggied in: \(error)")
+                    Logger.appDelegate.error("User is not logged in: \(error)")
                 }
             } else {
                 await Utility.clearDeviceOnFirstRun()
@@ -51,10 +51,6 @@ extension AppDelegate: UIApplicationDelegate {
                     try await setupRemotes()
                     try await store.populateSampleData()
                     try await healthKitStore.populateSampleData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        NotificationCenter.default.post(.init(name: Notification.Name(rawValue: Constants.requestSync)))
-                        Utility.requestHealthKitPermissions()
-                    }
                 } catch {
                     Logger.appDelegate.error("""
                         Could not populate

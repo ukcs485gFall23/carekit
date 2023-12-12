@@ -31,10 +31,13 @@
 import CareKit
 import CareKitStore
 import CareKitUI
+import CareKitUtilities
 import os.log
+import ResearchKit
 import SwiftUI
 import UIKit
 
+@MainActor
 class CareViewController: OCKDailyPageViewController {
 
     private var isSyncing = false
@@ -113,7 +116,6 @@ class CareViewController: OCKDailyPageViewController {
         }
     }
 
-    @MainActor
     @objc private func synchronizeWithRemote() {
         guard !isSyncing else {
             return
@@ -149,27 +151,32 @@ class CareViewController: OCKDailyPageViewController {
      */
     override func dailyPageViewController(_ dailyPageViewController: OCKDailyPageViewController,
                                           prepare listViewController: OCKListViewController, for date: Date) {
-        let isCurrentDay = Calendar.current.isDate(date, inSameDayAs: Date())
 
-        // Only show the tip view on the current date
-        if isCurrentDay {
-            if Calendar.current.isDate(date, inSameDayAs: Date()) {
-                // Add a non-CareKit view into the list
-                let tipTitle = "Benefits of exercising"
-                let tipText = "Learn how activity can promote a healthy pregnancy."
-                let tipView = TipView()
-                tipView.headerView.titleLabel.text = tipTitle
-                tipView.headerView.detailLabel.text = tipText
-                tipView.imageView.image = UIImage(named: "exercise.jpg")
-                tipView.customStyle = CustomStylerKey.defaultValue
-                listViewController.appendView(tipView, animated: false)
+        Task {
+
+            guard await Utility.checkIfOnboardingIsComplete() else {
+                let onboardSurvey = Onboard()
+                var query = OCKEventQuery(for: Date())
+                query.taskIDs = [Onboard.identifier()]
+                let onboardCard = OCKSurveyTaskViewController(eventQuery: query,
+                                                              store: self.store,
+                                                              survey: onboardSurvey.createSurvey(),
+                                                              extractOutcome: { _ in [OCKOutcomeValue(Date())] })
+                onboardCard.surveyDelegate = self
+
+                listViewController.clear()
+                listViewController.appendViewController(
+                    onboardCard,
+                    animated: false
+                )
+                self.isLoading = false
+                return
             }
-        }
 
-        fetchTasks(on: date) { result in
-            switch result {
-            case .success(let tasks):
-                tasks.compactMap {
+            do {
+                let tasks = try await fetchTasks(on: date)
+                let isCurrentDay = Calendar.current.isDate(date, inSameDayAs: Date())
+                let taskCards = tasks.compactMap {
                     let cards = self.taskViewController(for: $0,
                                                         on: date)
                     cards?.forEach {
@@ -180,43 +187,112 @@ class CareViewController: OCKDailyPageViewController {
                         $0.view.alpha = !isCurrentDay ? 0.4 : 1.0
                     }
                     return cards
-                }.forEach { (cards: [UIViewController]) in
+                }
+
+                // Only show the tip view on the current date
+                listViewController.clear()
+                if isCurrentDay {
+                    if Calendar.current.isDate(date, inSameDayAs: Date()) {
+                        // Add a non-CareKit view into the list
+                        /*let tipTitle = "Benefits of exercising"
+                        let tipText = "Learn how activity can promote a healthy pregnancy."
+                        let tipView = TipView()
+                        tipView.headerView.titleLabel.text = tipTitle
+                        tipView.headerView.detailLabel.text = tipText
+                        tipView.imageView.image = UIImage(named: "exercise.jpg")
+                        tipView.customStyle = CustomStylerKey.defaultValue
+                         listViewController.appendView(tipView, animated: false)
+                        */
+                        let customFeaturedView = CustomFeaturedContentViewController(
+                            url: "https://www.reddit.com/r/Ergonomics/",
+                            imageOverlayStyle: .unspecified,
+                            image: UIImage(named: "banner"),
+                            text: "Reddit Community",
+                            textColor: .white)
+                        customFeaturedView.customStyle = CustomStylerKey.defaultValue
+                        listViewController.appendView(customFeaturedView, animated: false)
+
+                    }
+                }
+
+                // Added custom card.
+                let newCustomCard = CustomCardView()
+                    .careKitStyle(CustomStylerKey.defaultValue)
+                let newCustomCardViewController = newCustomCard.formattedHostingController()
+                listViewController.appendViewController(
+                    newCustomCardViewController,
+                    animated: false
+                )
+                _ = AlcoholIntakeCard()
+                    .careKitStyle(CustomStylerKey.defaultValue)
+
+                taskCards.forEach { (cards: [UIViewController]) in
                     cards.forEach {
                         listViewController.appendViewController($0, animated: false)
                     }
                 }
-            case .failure(let error):
+            } catch {
                 Logger.feed.error("Could not fetch tasks: \(error)")
             }
+
             self.isLoading = false
+
         }
+
     }
 
     private func getStoreFetchRequestEvent(for taskId: String) -> CareStoreFetchedResult<OCKAnyEvent>? {
         events?.filter({ $0.result.task.id == taskId }).last
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     private func taskViewController(for task: OCKAnyTask,
                                     on date: Date) -> [UIViewController]? {
 
         var query = OCKEventQuery(for: Date())
         query.taskIDs = [task.id]
 
-        switch task.id {
-        case TaskID.steps:
+        let cardView: CareKitCard!
+
+        if let task = task as? OCKTask {
+            cardView = task.card
+        } else if let task = task as? OCKHealthKitTask {
+            cardView = task.card
+        } else {
+            return nil
+        }
+
+        switch cardView {
+        case .numericProgress:
             guard let event = getStoreFetchRequestEvent(for: task.id) else {
                 return nil
             }
-            let view = NumericProgressTaskView<_NumericProgressTaskViewHeader>(event: event, numberFormatter: .none)
+            let view = NumericProgressTaskView<InformationHeaderView>(event: event, numberFormatter: .none)
                 .careKitStyle(CustomStylerKey.defaultValue)
 
             return [view.formattedHostingController()]
 
-        case TaskID.stretch:
+        case .custom:
+            /*
+             xTODO: Example of showing how to use your custom card. This
+             should be placed correctly for the final to receive credit.
+             This card currently only shows when numericProgress is selected,
+             you should add the card to the switch statement properly to
+             make it show on purpose when the card type is selected.
+            */
+            guard let event = getStoreFetchRequestEvent(for: task.id) else {
+                return nil
+            }
+            let view = NumericProgressTaskView<InformationHeaderView>(event: event, numberFormatter: .none)
+                .careKitStyle(CustomStylerKey.defaultValue)
+
+            return [view.formattedHostingController()]
+
+        case .instruction:
             return [OCKInstructionsTaskViewController(query: query,
                                                       store: self.store)]
 
-        case TaskID.kegels:
+        case .simple:
             /*
              Since the kegel task is only scheduled every other day, there will be cases
              where it is not contained in the tasks array returned from the query.
@@ -225,78 +301,83 @@ class CareViewController: OCKDailyPageViewController {
                                                 store: self.store)]
 
         // Create a card for the doxylamine task if there are events for it on this day.
-        case TaskID.doxylamine:
+        case .checklist:
 
             return [OCKChecklistTaskViewController(query: query,
                                                    store: self.store)]
 
-        case TaskID.nausea:
-            var cards = [UIViewController]()
-            // dynamic gradient colors
-            let nauseaGradientStart = TintColorFlipKey.defaultValue
-            let nauseaGradientEnd = TintColorKey.defaultValue
-
-            // Create a plot comparing nausea to medication adherence.
-            let nauseaDataSeries = OCKDataSeriesConfiguration(
-                taskID: task.id,
-                legendTitle: "Nausea",
-                gradientStartColor: nauseaGradientStart,
-                gradientEndColor: nauseaGradientEnd,
-                markerSize: 10) { event in
-                    event.computeProgress(by: .summingOutcomeValues)
-                }
-
-            let doxylamineDataSeries = OCKDataSeriesConfiguration(
-                taskID: task.id,
-                legendTitle: "Doxylamine",
-                gradientStartColor: .systemGray2,
-                gradientEndColor: .systemGray,
-                markerSize: 10) { event in
-                    event.computeProgress(by: .summingOutcomeValues)
-                }
-
-            let insightsCard = OCKCartesianChartViewController(
-                plotType: .bar,
-                selectedDate: date,
-                configurations: [nauseaDataSeries, doxylamineDataSeries],
-                store: self.store)
-
-            insightsCard.typedView.headerView.titleLabel.text = "Nausea & Doxylamine Intake"
-            insightsCard.typedView.headerView.detailLabel.text = "This Week"
-            insightsCard.typedView.headerView.accessibilityLabel = "Nausea & Doxylamine Intake, This Week"
-            cards.append(insightsCard)
+        case .button:
 
             /*
              Also create a card that displays a single event.
              The event query passed into the initializer specifies that only
              today's log entries should be displayed by this log task view controller.
              */
-            let nauseaCard = OCKButtonLogTaskViewController(query: query,
+            let waterIntakeCard = OCKButtonLogTaskViewController(query: query,
                                                             store: self.store)
-            cards.append(nauseaCard)
-            return cards
+            return [waterIntakeCard]
+
+        case .labeledValue:
+
+            guard let event = getStoreFetchRequestEvent(for: task.id) else {
+                return nil
+            }
+            let view = LabeledValueTaskView<_LabeledValueTaskViewHeader>(event: event, numberFormatter: .none)
+                .careKitStyle(CustomStylerKey.defaultValue)
+
+            return [view.formattedHostingController()]
+
+        case .link:
+            let linkView = LinkView(title: .init("My Link"),
+                                    // swiftlint:disable:next line_length
+                                    links: [.website("http://www.engr.uky.edu/research-faculty/departments/computer-science",
+                                                     title: "College of Engineering")])
+            return [linkView.formattedHostingController()]
+
+        case .survey:
+            guard let surveyTask = task as? OCKTask else {
+                Logger.feed.error("Can only use a survey for an \"OCKTask\", not \(task.id)")
+                return nil
+            }
+
+            let surveyCard = OCKSurveyTaskViewController(
+                eventQuery: query,
+                store: self.store,
+                survey: surveyTask.survey.type().createSurvey(),
+                viewSynchronizer: SurveyViewSynchronizer(),
+                extractOutcome: surveyTask.survey.type().extractAnswers
+            )
+            surveyCard.surveyDelegate = self
+            return [surveyCard]
 
         default:
-            return nil
+            // Check if a healthKit task
+            guard task is OCKHealthKitTask else {
+                return [OCKSimpleTaskViewController(query: query,
+                                                    store: self.store)]
+            }
+
+            guard let event = getStoreFetchRequestEvent(for: task.id) else {
+                return nil
+            }
+
+            let view = LabeledValueTaskView<_LabeledValueTaskViewHeader>(event: event, numberFormatter: .none)
+                .careKitStyle(CustomStylerKey.defaultValue)
+
+            return [view.formattedHostingController()]
         }
     }
 
-    private func fetchTasks(on date: Date,
-                            completion: @escaping (Result<[OCKAnyTask], Error>) -> Void) {
+    private func fetchTasks(on date: Date) async throws -> [OCKAnyTask] {
         var query = OCKTaskQuery(for: date)
         query.excludesTasksWithNoEvents = true
-        store.fetchAnyTasks(query: query, callbackQueue: .main) { result in
-            switch result {
-            case .success(let tasks):
-                let orderedTasks = TaskID.ordered.compactMap { orderedTaskID in
-                    tasks.first(where: { $0.id == orderedTaskID })
-                }
-                completion(.success(orderedTasks))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+        let tasks = try await store.fetchAnyTasks(query: query)
+
+        // Remove onboarding tasks from array
+        let filteredTasks = tasks.filter { $0.id != Onboard.identifier() }
+        return filteredTasks
     }
+
 }
 
 private extension View {
@@ -304,5 +385,16 @@ private extension View {
         let viewController = UIHostingController(rootView: self)
         viewController.view.backgroundColor = .clear
         return viewController
+    }
+}
+
+extension CareViewController: OCKSurveyTaskViewControllerDelegate {
+    func surveyTask(viewController: OCKSurveyTaskViewController,
+                    for task: OCKAnyTask,
+                    didFinish result: Result<ORKTaskViewControllerFinishReason, Error>) {
+
+        if case let .success(reason) = result, reason == .completed {
+            reload()
+        }
     }
 }

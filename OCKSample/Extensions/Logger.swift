@@ -18,6 +18,7 @@ extension Logger {
     static let utility = Logger(subsystem: subsystem, category: "Utility")
     static let contact = Logger(subsystem: subsystem, category: "Contact")
     static let login = Logger(subsystem: subsystem, category: "Login")
+    static let myContact = Logger(subsystem: subsystem, category: "MyContact")
     static let feed = Logger(subsystem: subsystem, category: "Feed")
     static let watch = Logger(subsystem: subsystem, category: "Watch")
     static let profile = Logger(subsystem: subsystem, category: "Profile")
@@ -25,4 +26,8 @@ extension Logger {
     static let ockStore = Logger(subsystem: subsystem, category: "OCKStore+Extension")
     static let ockHealthKitPassthroughStore = Logger(subsystem: subsystem,
                                                      category: "OCKHealthKitPassthroughStore+Extension")
+    static let careKitTask = Logger(subsystem: subsystem,
+                                        category: "CareKitTask")
+    static let customCardTask = Logger(subsystem: subsystem,
+                                        category: "CustomCardTask")
 }

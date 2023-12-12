@@ -14,6 +14,7 @@ import UIKit
 
 struct ContactView: UIViewControllerRepresentable {
     @Environment(\.careStore) var careStore
+    @CareStoreFetchRequest(query: ContactViewModel.contactQuery()) private var contacts
 
     func makeUIViewController(context: Context) -> some UIViewController {
         let viewController = createViewController()
@@ -30,9 +31,11 @@ struct ContactView: UIViewControllerRepresentable {
     }
 
     func createViewController() -> UIViewController {
-        OCKContactsListViewController(store: careStore,
-                                      contactViewSynchronizer: OCKDetailedContactViewSynchronizer())
-    }
+        CustomContactViewController(
+                   store: careStore,
+                   contacts: contacts,
+                   viewSynchronizer: OCKSimpleContactViewSynchronizer())
+           }
 }
 
 struct ContactView_Previews: PreviewProvider {
