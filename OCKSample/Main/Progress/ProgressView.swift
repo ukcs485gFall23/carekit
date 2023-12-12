@@ -24,11 +24,11 @@ struct ProgressView: View {
                     // xTODO: Remove all that you are not using.
                     // Example of using a CareKitUIView.
                     LinkView(
-                        title: .init("My Link"),
+                        title: .init("Community Boards!"),
                         links: [
                             .website(
-                                "http://www.engr.uky.edu/research-faculty/departments/computer-science",
-                                title: "College of Engineering"
+                                "http://tinyurl.com/5enr3y7z",
+                                title: "Useful forums!"
                             )
                         ]
                     )
@@ -48,6 +48,8 @@ struct ProgressView: View {
                         NumericProgressTaskView<InformationHeaderView>(event: alchoolIntake)
 
                     }
+
+                    AlcoholIntakeCard()
 
                 }
                 .padding()
