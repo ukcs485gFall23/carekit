@@ -37,6 +37,12 @@ final class SurveyViewSynchronizer: OCKSurveyTaskViewSynchronizer {
                 view.instructionsLabel.text = """
                 Range of Motion: \(range)
                 """
+            case "Reaction Time":
+                let reaction = event.answer(kind: #keyPath(ORKNormalizedReactionTimeResult.currentInterval))
+
+                view.instructionsLabel.text = """
+                Reaction time: \(reaction)
+                """
             default:
                 view.instructionsLabel.isHidden = true
             }
