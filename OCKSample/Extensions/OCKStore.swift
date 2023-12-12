@@ -220,7 +220,7 @@ extension OCKStore {
                                    carePlanUUID: carePlanUUIDs[CarePlanID.alchool],
                                    schedule: alcholicDrinksSchedule)
         alcholicDrinks.impactsAdherence = false
-        alcholicDrinks.instructions = "It's not recommended to have above one alchooloc drink per day"
+        alcholicDrinks.instructions = "It's not recommended to have above one alchooloc drink per day, 7 a week"
         alcholicDrinks.asset = "wineglass"
         alcholicDrinks.card = .custom
         alcholicDrinks.graph = .line

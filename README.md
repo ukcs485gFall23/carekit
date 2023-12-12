@@ -20,8 +20,8 @@ Add the public link to your YouTube or video posted elsewhere.
 -->
 To learn more about this application, watch the video below:
 
-<a href="https://www.youtube.com/watch?feature=player_embedded&v=5tL2P1MByJI" target="_blank"><img src="http://img.youtube.com/vi/5tL2P1MByJI/0.jpg" 
-alt="Sample demo video" width="240" height="180" border="10" /></a>
+[Demo video](https://youtu.be/_EWbdbzKg_A)
+
 
 ### Designed for the following users
 <!--
@@ -35,7 +35,14 @@ Increased motivation: Geek-App can help users to stay motivated by providing the
 <!--
 In addition, you can drop screenshots directly into your README file to add them to your README. Take these from your presentations.
 -->
-<img width="300" alt="Screen Shot 2023-05-03 at 7 50 32 PM" src="https://user-images.githubusercontent.com/85644343/236076555-34489bb1-08a1-42ab-8026-2dbf9742030c.png"> <img width="300" alt="Screen Shot 2023-05-03 at 7 53 57 PM" src="https://user-images.githubusercontent.com/85644343/236076761-08decb02-68ac-4e41-ad7c-225fe2b2ef02.png"> <img width="300" alt="Screen Shot 2023-05-03 at 7 58 42 PM" src="https://user-images.githubusercontent.com/85644343/236076811-9472fa89-7db4-417d-a0b4-db728f78d637.png"> <img width="300" alt="Screen Shot 2023-05-03 at 7 51 13 PM" src="https://user-images.githubusercontent.com/85644343/236076716-f9cb1673-d338-4449-8a5c-de5124758962.png"> <img width="300" alt="Screen Shot 2023-05-03 at 7 52 39 PM" src="https://user-images.githubusercontent.com/85644343/236076735-4f7701df-6959-4b08-9117-36f2f1fb7056.png"> <img width="300" alt="Screen Shot 2023-05-03 at 7 53 12 PM" src="https://user-images.githubusercontent.com/85644343/236076749-65db14cb-8910-473c-8804-76a9059fc479.png"> <img width="300" alt="Screen Shot 2023-05-03 at 7 55 09 PM" src="https://user-images.githubusercontent.com/85644343/236076788-f9201176-34dc-45c7-bd33-71139fc7f62d.png"> <img width="300" alt="Screen Shot 2023-05-03 at 7 55 59 PM" src="https://user-images.githubusercontent.com/85644343/236076804-19577fa6-95cc-4f0d-974a-f99a6decc43a.png"> <img width="300" alt="Screen Shot 2023-05-03 at 8 20 04 PM" src="https://user-images.githubusercontent.com/85644343/236078392-09edcd57-9a95-42c9-9548-e2e5fe693327.png">
+
+
+![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 15 16](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/fa05bc15-d595-466a-8dbc-e0f43038ff72 | width=300)
+![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 15 16](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/fa05bc15-d595-466a-8dbc-e0f43038ff72 | width=300)
+![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 21 45](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/1d4d4db9-6c12-49bb-ab87-15a2fdc21db2 | width=300)
+![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 22 33](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/22907d35-0714-4d1c-8bba-a6fb74bdc6f4 | width=300)
+![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 32 28](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/cb92106f-9453-49aa-ada1-0c8fbdaa7464 | width=300)
+![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 44 08](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/0ccf43ba-4e7f-4f62-95cc-db7313c6fbc3 | width=300)
 
 <!--
 List all of the members who developed the project and
@@ -98,6 +105,7 @@ Describe at least 3 features you want to add in the future before releasing your
 2. Social features for friendly competition
 3. Ability to delete tasks
 4. Ability to import images into tasks
+5. allow user to set goals on the app
 
 ## Challenges faced while developing
 <!--

@@ -223,7 +223,7 @@ class CareViewController: OCKDailyPageViewController {
                     newCustomCardViewController,
                     animated: false
                 )
-                let new2 = AlcoholIntakeCard()
+                _ = AlcoholIntakeCard()
                     .careKitStyle(CustomStylerKey.defaultValue)
 
                 taskCards.forEach { (cards: [UIViewController]) in
