@@ -176,11 +176,11 @@ extension OCKStore {
                                  title: "Take Doxylamine",
                                  carePlanUUID: nil,
                                  schedule: schedule)
-        doxylamine.instructions = "Take 25mg of doxylamine when you experience nausea."
+        doxylamine.instructions = "Take 25mg of doxylamine when you experience waterIntake."
         doxylamine.asset = "pills.fill"
         doxylamine.card = .checklist
 
-        let nauseaSchedule = OCKSchedule(composing: [
+        let waterIntakeSchedule = OCKSchedule(composing: [
             OCKScheduleElement(start: beforeBreakfast,
                                end: nil,
                                interval: DateComponents(day: 1),
@@ -188,14 +188,14 @@ extension OCKStore {
                                targetValues: [], duration: .allDay)
             ])
 
-        var nausea = OCKTask(id: TaskID.nausea,
-                             title: "Track your nausea",
-                             carePlanUUID: carePlanUUIDs[.nausea],
-                             schedule: nauseaSchedule)
-        nausea.impactsAdherence = false
-        nausea.instructions = "Tap the button below anytime you experience nausea."
-        nausea.asset = "bed.double"
-        nausea.card = .button
+        var waterIntake = OCKTask(id: TaskID.waterIntake,
+                             title: "Track your water intake",
+                             carePlanUUID: carePlanUUIDs[.waterIntake],
+                             schedule: waterIntakeSchedule)
+        waterIntake.impactsAdherence = false
+        waterIntake.instructions = "Tap the button below anytime you drink a glass of water."
+        waterIntake.asset = "waterbottle"
+        waterIntake.card = .button
 
         let kegelElement = OCKScheduleElement(start: beforeBreakfast,
                                               end: nil,
@@ -208,20 +208,36 @@ extension OCKStore {
         kegels.impactsAdherence = true
         kegels.instructions = "Perform kegel exercies"
         kegels.card = .simple
-
-        let stretchElement = OCKScheduleElement(start: beforeBreakfast,
+        let alcholicDrinksElement = OCKScheduleElement(start: beforeBreakfast,
                                                 end: nil,
-                                                interval: DateComponents(day: 1))
-        let stretchSchedule = OCKSchedule(composing: [stretchElement])
+                                                interval: DateComponents(day: 1),
+                                                text: "Drinks",
+                                                targetValues: [], duration: .allDay)
+        let alcholicDrinksSchedule = OCKSchedule(composing: [alcholicDrinksElement])
+
+        var alcholicDrinks = OCKTask(id: TaskID.alchoolIntake,
+                                   title: "Track alchool intake",
+                                   carePlanUUID: carePlanUUIDs[CarePlanID.alchool],
+                                   schedule: alcholicDrinksSchedule)
+        alcholicDrinks.impactsAdherence = false
+        alcholicDrinks.instructions = "It's not recommended to have above one alchooloc drink per day"
+        alcholicDrinks.asset = "wineglass"
+        alcholicDrinks.card = .custom
+        alcholicDrinks.graph = .line
+        alcholicDrinks.groupIdentifier = "Drinks" // unit for data series legend
+//        let stretchElement = OCKScheduleElement(start: beforeBreakfast,
+//                                                end: nil,
+//                                                interval: DateComponents(day: 1))
+//        let stretchSchedule = OCKSchedule(composing: [stretchElement])
         var stretch = OCKTask(id: TaskID.stretch,
                               title: "Stretch",
                               carePlanUUID: carePlanUUIDs[.stretch],
-                              schedule: stretchSchedule)
+                              schedule: waterIntakeSchedule)
         stretch.impactsAdherence = true
         stretch.asset = "figure.walk"
-        stretch.card = .instruction
+        stretch.card = .checklist
 
-        try await addTasksIfNotPresent([nausea, doxylamine, kegels, stretch])
+        try await addTasksIfNotPresent([waterIntake, doxylamine, kegels, stretch, alcholicDrinks])
         try await addOnboardingTask(carePlanUUIDs[.health])
         try await addSurveyTasks(carePlanUUIDs[.checkIn])
         var contact1 = OCKContact(id: "jane",
@@ -337,6 +353,18 @@ extension OCKStore {
                 composing: [dailyElement, weeklyElement]
             )
 
+            let reactionTimeSchedule = OCKSchedule(
+                composing: [dailyElement, weeklyElement]
+            )
+
+            var reactionTimeTask = OCKTask(
+                id: ReactionTime.identifier(),
+                title: "Vision Exercise",
+                carePlanUUID: carePlanUUID,
+                schedule: reactionTimeSchedule)
+            reactionTimeTask.card = .survey
+            reactionTimeTask.survey = .reactionTime
+
             var rangeOfMotionTask = OCKTask(
                 id: RangeOfMotion.identifier(),
                 title: "Range Of Motion",
@@ -346,6 +374,6 @@ extension OCKStore {
             rangeOfMotionTask.card = .survey
             rangeOfMotionTask.survey = .rangeOfMotion
 
-            try await addTasksIfNotPresent([checkInTask, rangeOfMotionTask])
+            try await addTasksIfNotPresent([checkInTask, reactionTimeTask])
         }
 }

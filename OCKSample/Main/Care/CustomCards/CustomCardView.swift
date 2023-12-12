@@ -30,13 +30,18 @@ struct CustomCardView: View {
                         Image(systemName: "flag.2.crossed")
                             .resizable()
                             .renderingMode(.template)
-                            .frame(width: 25, height: 40)
+                            .frame(width: 25, height: 35)
                             .foregroundColor(Color(tintColor))
                         Spacer()
-                        Text(displayedPun)
-                            .onAppear {
-                                shufflePuns()
-                            }
+                        VStack(alignment: .leading) {
+                            Text("Pun of the Day")
+                                .font(.headline)
+                                .bold()
+                            Text(displayedPun)
+                                .onAppear {
+                                    shufflePuns()
+                                }
+                        }
                     }
 
                 }.padding()

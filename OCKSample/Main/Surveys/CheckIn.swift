@@ -21,7 +21,7 @@ struct CheckIn: Surveyable {
         "\(Self.identifier()).form"
     }
 
-    static var painItemIdentifier: String {
+    static var productivityItemIdentifier: String {
         "\(Self.identifier()).form.pain"
     }
 
@@ -34,22 +34,22 @@ struct CheckIn: Surveyable {
 extension CheckIn {
     func createSurvey() -> ORKTask {
 
-        let painAnswerFormat = ORKAnswerFormat.scale(
+        let productivityAnswerFormat = ORKAnswerFormat.scale(
             withMaximumValue: 10,
             minimumValue: 0,
             defaultValue: 0,
             step: 1,
             vertical: false,
-            maximumValueDescription: "Very painful",
-            minimumValueDescription: "No pain"
+            maximumValueDescription: "Feel Very Productive",
+            minimumValueDescription: "Burned Out"
         )
 
-        let painItem = ORKFormItem(
-            identifier: Self.painItemIdentifier,
-            text: "How would you rate your pain?",
-            answerFormat: painAnswerFormat
+        let productivityItem = ORKFormItem(
+            identifier: Self.productivityItemIdentifier,
+            text: "How would you rate your productivity levels?",
+            answerFormat: productivityAnswerFormat
         )
-        painItem.isOptional = false
+        productivityItem.isOptional = false
 
         let sleepAnswerFormat = ORKAnswerFormat.scale(
             withMaximumValue: 12,
@@ -73,7 +73,7 @@ extension CheckIn {
             title: "Check In",
             text: "Please answer the following questions."
         )
-        formStep.formItems = [painItem, sleepItem]
+        formStep.formItems = [productivityItem, sleepItem]
         formStep.isOptional = false
 
         let surveyTask = ORKOrderedTask(
@@ -93,8 +93,8 @@ extension CheckIn {
             let scaleResults = response
                 .results?.compactMap({ $0 as? ORKScaleQuestionResult }),
 
-            let painAnswer = scaleResults
-                .first(where: { $0.identifier == Self.painItemIdentifier })?
+            let productivityAnswer = scaleResults
+                .first(where: { $0.identifier == Self.productivityItemIdentifier })?
                 .scaleAnswer,
 
             let sleepAnswer = scaleResults
@@ -105,13 +105,13 @@ extension CheckIn {
             return nil
         }
 
-        var painValue = OCKOutcomeValue(Double(truncating: painAnswer))
-        painValue.kind = Self.painItemIdentifier
+        var productivityValue = OCKOutcomeValue(Double(truncating: productivityAnswer))
+        productivityValue.kind = Self.productivityItemIdentifier
 
         var sleepValue = OCKOutcomeValue(Double(truncating: sleepAnswer))
         sleepValue.kind = Self.sleepItemIdentifier
 
-        return [painValue, sleepValue]
+        return [productivityValue, sleepValue]
     }
 }
 #endif

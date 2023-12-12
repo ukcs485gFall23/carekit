@@ -15,10 +15,13 @@ enum CarePlanID: String, CaseIterable, Identifiable {
     case checkIn = "check In"
     case stat
     case health
+    case moveTime
+    case standingTime
     case productivity = "productivity"
     case stretch = "stretch"
     case diet = "diet"
-    case nausea = "nausea"
+    case waterIntake = "waterIntake"
     case steps = "steps"
     case kegle = "kagle"
+    case alchool = "alchool"
 }

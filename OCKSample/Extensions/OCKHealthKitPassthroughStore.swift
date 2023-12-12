@@ -43,17 +43,19 @@ extension OCKHealthKitPassthroughStore {
 
         func populateSampleData(_ patientUUID: UUID? = nil) async throws {
 
+//        let dailySchedule = OCKSchedule.dailyAtTime(hour: 12, minutes: 00, start: Date(), end: nil, text: nil)
+
         let schedule = OCKSchedule.dailyAtTime(
             hour: 8, minutes: 0, start: Date(), end: nil, text: nil,
             duration: .hours(12), targetValues: [OCKOutcomeValue(2000.0, units: "Steps")])
 
-            /*
-                     xTODO: You need to tie an OCKCarePlan to each HealthKit task. There was a
-                     a method added recently in Extensions/OCKStore.swift to assist with this. Use this method here
-                     and write a comment and state if it's an "instance method" or "type method". If you
-                     are trying to copy the method to this file, you are using the code incorrectly. Be
-                     sure to understand the difference between a type method and instance method.
-                     */
+//            let alchoolSchedule = OCKSchedule.weeklyAtTime(weekday: 7,
+//                                                           hours: 18,
+//                                                           minutes: 00,
+//                                                           start: Date(),
+//                                                           end: nil,
+//                                                           targetValues: [OCKOutcomeValue(7, units: "Bottles")],
+//                                                           text: nil)
         let carePlanUUIDs = try await OCKStore.getCarePlanUUIDs() // type method
 
         var steps = OCKHealthKitTask(
@@ -67,6 +69,47 @@ extension OCKHealthKitPassthroughStore {
                 unit: .count()))
         steps.asset = "figure.walk"
         steps.card = .numericProgress
-        try await addTasksIfNotPresent([steps])
+
+        var numberOfAlcoholicBeverages = OCKHealthKitTask(id: TaskID.alchoolIntake,
+                                                              title: "Alchool Intake",
+                                                          carePlanUUID: carePlanUUIDs[.alchool],
+                                                          schedule: schedule,
+                                                          healthKitLinkage: OCKHealthKitLinkage(
+                                                            quantityIdentifier: .numberOfAlcoholicBeverages,
+                                                            quantityType: .cumulative,
+                                                            unit: .count()))
+        numberOfAlcoholicBeverages.asset = "wineglass"
+        numberOfAlcoholicBeverages.card = .numericProgress
+        numberOfAlcoholicBeverages.instructions = "Aim for 7 bottles steps each week!"
+        var moveTime = OCKHealthKitTask(id: TaskID.moveTime,
+                                              title: "Move Time",
+                                          carePlanUUID: carePlanUUIDs[.moveTime],
+                                          schedule: schedule,
+                                          healthKitLinkage: OCKHealthKitLinkage(
+                                            quantityIdentifier: .appleMoveTime,
+                                            quantityType: .cumulative,
+                                            unit: .minute()))
+
+            moveTime.card = .numericProgress
+            moveTime.graph = .bar
+            moveTime.groupIdentifier = "Move Time" // unit for data series legend
+            moveTime.instructions = "30 mins of excersise is recommended!"
+            moveTime.asset = "figure.walk.motion"
+
+        var standTime = OCKHealthKitTask(id: TaskID.standingTime,
+                                          title: "Stand Time",
+                                      carePlanUUID: carePlanUUIDs[.standingTime],
+                                      schedule: schedule,
+                                      healthKitLinkage: OCKHealthKitLinkage(
+                                        quantityIdentifier: .appleMoveTime,
+                                        quantityType: .cumulative,
+                                        unit: .minute()))
+
+            standTime.asset = "figure.stand"
+            standTime.card = .numericProgress
+            standTime.instructions = "Aim for at least 10 hours of standing time daily"
+
+    try await addTasksIfNotPresent([steps, standTime, numberOfAlcoholicBeverages, moveTime])
+
     }
 }
