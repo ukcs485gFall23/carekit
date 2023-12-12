@@ -41,8 +41,7 @@ extension OCKHealthKitPassthroughStore {
         }
     }
 
-        func populateSampleData(_ patientUUID: UUID? = nil) async throws {
-
+    func populateSampleData(_ patientUUID: UUID? = nil) async throws {
         let dailySchedule = OCKSchedule.dailyAtTime(hour: 12,
                                                     minutes: 00,
                                                     start: Date(),
@@ -56,13 +55,13 @@ extension OCKHealthKitPassthroughStore {
             hour: 8, minutes: 0, start: Date(), end: nil, text: nil,
             duration: .hours(12), targetValues: [OCKOutcomeValue(2000.0, units: "Steps")])
 
-            let alchoolSchedule = OCKSchedule.weeklyAtTime(weekday: 7,
-                                                           hours: 18,
-                                                           minutes: 00,
-                                                           start: Date(),
-                                                           end: nil,
-                                                           targetValues: [OCKOutcomeValue(7, units: "Bottles")],
-                                                           text: nil)
+        let alchoolSchedule = OCKSchedule.weeklyAtTime(weekday: 7,
+                                                       hours: 18,
+                                                       minutes: 00,
+                                                       start: Date(),
+                                                       end: nil,
+                                                       targetValues: [OCKOutcomeValue(7, units: "Bottles")],
+                                                       text: nil)
         let carePlanUUIDs = try await OCKStore.getCarePlanUUIDs() // type method
 
         var steps = OCKHealthKitTask(
@@ -78,46 +77,45 @@ extension OCKHealthKitPassthroughStore {
         steps.card = .numericProgress
 
         var numberOfAlcoholicBeverages = OCKHealthKitTask(id: TaskID.alchoolIntake,
-                                                              title: "Alchool Intake",
-                                                          carePlanUUID: carePlanUUIDs[.alchool],
-                                                          schedule: alchoolSchedule,
-                                                          healthKitLinkage: OCKHealthKitLinkage(
-                                                            quantityIdentifier: .numberOfAlcoholicBeverages,
-                                                            quantityType: .cumulative,
-                                                            unit: .count()))
+                                                        title: "Alcohol Intake",
+                                                        carePlanUUID: carePlanUUIDs[.alcohol],
+                                                        schedule: alchoolSchedule,
+                                                        healthKitLinkage: OCKHealthKitLinkage(
+                                                        quantityIdentifier: .numberOfAlcoholicBeverages,
+                                                        quantityType: .cumulative,
+                                                        unit: .count()))
         numberOfAlcoholicBeverages.asset = "wineglass"
         numberOfAlcoholicBeverages.card = .numericProgress
         numberOfAlcoholicBeverages.instructions = "Aim for 7 bottles steps each week!"
 
-            var moveTime = OCKHealthKitTask(id: TaskID.moveTime,
-                                              title: "Excercise Time",
-                                          carePlanUUID: carePlanUUIDs[.moveTime],
-                                          schedule: moveSchedule,
-                                          healthKitLinkage: OCKHealthKitLinkage(
+        var moveTime = OCKHealthKitTask(id: TaskID.moveTime,
+                                        title: "Exercise Time",
+                                        carePlanUUID: carePlanUUIDs[.moveTime],
+                                        schedule: moveSchedule,
+                                        healthKitLinkage: OCKHealthKitLinkage(
                                             quantityIdentifier: .appleMoveTime,
                                             quantityType: .cumulative,
                                             unit: .minute()))
 
-            moveTime.card = .numericProgress
-            moveTime.graph = .bar
-            moveTime.groupIdentifier = "Move Time" // unit for data series legend
-            moveTime.instructions = "30 mins of excersise is recommended!"
-            moveTime.asset = "figure.walk.motion"
+        moveTime.card = .numericProgress
+        moveTime.graph = .bar
+        moveTime.groupIdentifier = "Move Time" // unit for data series legend
+        moveTime.instructions = "30 mins of exercise is recommended!"
+        moveTime.asset = "figure.walk.motion"
 
         var standTime = OCKHealthKitTask(id: TaskID.standingTime,
-                                          title: "Stand Time",
-                                      carePlanUUID: carePlanUUIDs[.standingTime],
-                                      schedule: dailySchedule,
-                                      healthKitLinkage: OCKHealthKitLinkage(
-                                        quantityIdentifier: .appleMoveTime,
-                                        quantityType: .cumulative,
-                                        unit: .minute()))
+                                         title: "Stand Time",
+                                         carePlanUUID: carePlanUUIDs[.standingTime],
+                                         schedule: dailySchedule,
+                                         healthKitLinkage: OCKHealthKitLinkage(
+                                             quantityIdentifier: .appleStandTime,
+                                             quantityType: .cumulative,
+                                             unit: .minute()))
 
-            standTime.asset = "figure.stand"
-            standTime.card = .numericProgress
-            standTime.instructions = "Aim for at least 10 hours of standing time daily"
+        standTime.asset = "figure.stand"
+        standTime.card = .numericProgress
+        standTime.instructions = "Aim for at least 10 hours of standing time daily"
 
-    try await addTasksIfNotPresent([steps, standTime, numberOfAlcoholicBeverages, moveTime])
-
+        try await addTasksIfNotPresent([steps, standTime, numberOfAlcoholicBeverages, moveTime])
     }
 }
