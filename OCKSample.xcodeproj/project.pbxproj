@@ -145,6 +145,7 @@
 		DF9D6C1A2AF57F4D00C5573A /* OCKTask+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B92232AF40AF500973C3D /* OCKTask+Custom.swift */; };
 		DF9D6C1B2AF57F5500C5573A /* OCKHealthKitTask+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B92252AF40B1900973C3D /* OCKHealthKitTask+Custom.swift */; };
 		DF9D6C1C2AF57F8500C5573A /* CareKitCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B92212AF40ACE00973C3D /* CareKitCard.swift */; };
+		DFEC677D2B28594C00C7662F /* AlchoolIntakeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEC677C2B28594C00C7662F /* AlchoolIntakeCard.swift */; };
 		E72B2C0A226939E3009A9438 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B2C09226939E3009A9438 /* AppDelegate.swift */; };
 		E72B2C14226939E4009A9438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E72B2C12226939E4009A9438 /* LaunchScreen.storyboard */; };
 		E7440E4F229477F7007AD30A /* CareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7440E4E229477F7007AD30A /* CareViewController.swift */; };
@@ -291,6 +292,7 @@
 		DF62052F2B067F4300C605B8 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		DF9D6C162AF57EDF00C5573A /* CareKitTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareKitTaskView.swift; sourceTree = "<group>"; };
 		DF9D6C182AF57F1A00C5573A /* CareKitTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareKitTaskViewModel.swift; sourceTree = "<group>"; };
+		DFEC677C2B28594C00C7662F /* AlchoolIntakeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlchoolIntakeCard.swift; sourceTree = "<group>"; };
 		E72B2C06226939E3009A9438 /* OCKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72B2C09226939E3009A9438 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E72B2C13226939E4009A9438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				E7C37848228F887800E982D8 /* TipView.swift */,
 				DF6205212B067DB500C605B8 /* SurveyViewSynchronizer.swift */,
 				DF5826092B24E18D001C39B7 /* CustomCardView.swift */,
+				DFEC677C2B28594C00C7662F /* AlchoolIntakeCard.swift */,
 				DF58260B2B24E1B2001C39B7 /* CustomFeaturedContentViewController.swift */,
 			);
 			path = CustomCards;
@@ -1024,6 +1027,7 @@
 				7036E4BF256DA089006E9A3C /* LoginViewModel.swift in Sources */,
 				27F2B2012B01FA0A00D7135E /* ImagePicker.swift in Sources */,
 				DF6205302B067F4300C605B8 /* Survey.swift in Sources */,
+				DFEC677D2B28594C00C7662F /* AlchoolIntakeCard.swift in Sources */,
 				7036E517256F2413006E9A3C /* ProfileViewModel.swift in Sources */,
 				7099D20B29E98E400037CD8E /* InstallationChannel.swift in Sources */,
 			);

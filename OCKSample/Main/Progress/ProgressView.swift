@@ -24,11 +24,11 @@ struct ProgressView: View {
                     // xTODO: Remove all that you are not using.
                     // Example of using a CareKitUIView.
                     LinkView(
-                        title: .init("My Link"),
+                        title: .init("Community Boards!"),
                         links: [
                             .website(
-                                "http://www.engr.uky.edu/research-faculty/departments/computer-science",
-                                title: "College of Engineering"
+                                "http://tinyurl.com/5enr3y7z",
+                                title: "Useful forums!"
                             )
                         ]
                     )
@@ -37,27 +37,20 @@ struct ProgressView: View {
 
                         // Example of using another CareKitUIView.
                         NumericProgressTaskView<InformationHeaderView>(event: stepEvent)
-
-                        // Example of using another CareKitUIView.
-                        LabeledValueTaskView<InformationHeaderView>(event: stepEvent)
                     }
 
                     if let standingEvent = getEvent(for: TaskID.standingTime) {
                         // Example of using another CareKitUIView.
-                        SimpleTaskView<InformationHeaderView>(event: standingEvent)
-
+                        NumericProgressTaskView<InformationHeaderView>(event: standingEvent)
+                    }
+                    if let alchoolIntake = getEvent(for: TaskID.alchoolIntake) {
                         // Example of using another CareKitUIView.
-                        InstructionsTaskView<InformationHeaderView>(event: standingEvent)
+                        NumericProgressTaskView<InformationHeaderView>(event: alchoolIntake)
 
-                        // Use our customcard view with text.
-                        CustomCardTaskView(event: standingEvent)
                     }
 
-                    // Use our customcard view with text.
-                    CustomCardView()
+                    AlcoholIntakeCard()
 
-                    // Example of basic SwiftUI view
-                    Text("Hello, World!")
                 }
                 .padding()
             }

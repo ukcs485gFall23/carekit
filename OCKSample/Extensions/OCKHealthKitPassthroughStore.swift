@@ -43,19 +43,21 @@ extension OCKHealthKitPassthroughStore {
 
         func populateSampleData(_ patientUUID: UUID? = nil) async throws {
 
-//        let dailySchedule = OCKSchedule.dailyAtTime(hour: 12, minutes: 00, start: Date(), end: nil, text: nil)
-
+        let dailySchedule = OCKSchedule.dailyAtTime(hour: 12, minutes: 00, start: Date(), end: nil, text: nil)
+        let moveSchedule = OCKSchedule.dailyAtTime(
+            hour: 8, minutes: 0, start: Date(), end: nil, text: nil,
+            duration: .hours(12), targetValues: [OCKOutcomeValue(30, units: "Minutes")])
         let schedule = OCKSchedule.dailyAtTime(
             hour: 8, minutes: 0, start: Date(), end: nil, text: nil,
             duration: .hours(12), targetValues: [OCKOutcomeValue(2000.0, units: "Steps")])
 
-//            let alchoolSchedule = OCKSchedule.weeklyAtTime(weekday: 7,
-//                                                           hours: 18,
-//                                                           minutes: 00,
-//                                                           start: Date(),
-//                                                           end: nil,
-//                                                           targetValues: [OCKOutcomeValue(7, units: "Bottles")],
-//                                                           text: nil)
+            let alchoolSchedule = OCKSchedule.weeklyAtTime(weekday: 7,
+                                                           hours: 18,
+                                                           minutes: 00,
+                                                           start: Date(),
+                                                           end: nil,
+                                                           targetValues: [OCKOutcomeValue(7, units: "Bottles")],
+                                                           text: nil)
         let carePlanUUIDs = try await OCKStore.getCarePlanUUIDs() // type method
 
         var steps = OCKHealthKitTask(
@@ -73,7 +75,7 @@ extension OCKHealthKitPassthroughStore {
         var numberOfAlcoholicBeverages = OCKHealthKitTask(id: TaskID.alchoolIntake,
                                                               title: "Alchool Intake",
                                                           carePlanUUID: carePlanUUIDs[.alchool],
-                                                          schedule: schedule,
+                                                          schedule: alchoolSchedule,
                                                           healthKitLinkage: OCKHealthKitLinkage(
                                                             quantityIdentifier: .numberOfAlcoholicBeverages,
                                                             quantityType: .cumulative,
@@ -81,10 +83,11 @@ extension OCKHealthKitPassthroughStore {
         numberOfAlcoholicBeverages.asset = "wineglass"
         numberOfAlcoholicBeverages.card = .numericProgress
         numberOfAlcoholicBeverages.instructions = "Aim for 7 bottles steps each week!"
-        var moveTime = OCKHealthKitTask(id: TaskID.moveTime,
-                                              title: "Move Time",
+
+            var moveTime = OCKHealthKitTask(id: TaskID.moveTime,
+                                              title: "Excercise Time",
                                           carePlanUUID: carePlanUUIDs[.moveTime],
-                                          schedule: schedule,
+                                          schedule: moveSchedule,
                                           healthKitLinkage: OCKHealthKitLinkage(
                                             quantityIdentifier: .appleMoveTime,
                                             quantityType: .cumulative,
@@ -99,7 +102,7 @@ extension OCKHealthKitPassthroughStore {
         var standTime = OCKHealthKitTask(id: TaskID.standingTime,
                                           title: "Stand Time",
                                       carePlanUUID: carePlanUUIDs[.standingTime],
-                                      schedule: schedule,
+                                      schedule: dailySchedule,
                                       healthKitLinkage: OCKHealthKitLinkage(
                                         quantityIdentifier: .appleMoveTime,
                                         quantityType: .cumulative,
