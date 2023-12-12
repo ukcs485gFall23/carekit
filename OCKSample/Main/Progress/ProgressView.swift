@@ -21,14 +21,14 @@ struct ProgressView: View {
             ScrollView {
                 VStack {
 
-                    // xTODO: Remove all that you are not using.
                     // Example of using a CareKitUIView.
                     LinkView(
-                        title: .init("Community Boards!"),
+                        title: .init("Other Communities worth checking"),
                         links: [
                             .website(
-                                "http://tinyurl.com/5enr3y7z",
-                                title: "Useful forums!"
+                                "https://www.quora.com/topic/Ergonomics",
+                                title: "Quora"
+
                             )
                         ]
                     )

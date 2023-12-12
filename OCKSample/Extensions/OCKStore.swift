@@ -172,13 +172,13 @@ extension OCKStore {
                                end: nil,
                                interval: DateComponents(day: 2))
         ])
-        var doxylamine = OCKTask(id: TaskID.doxylamine,
-                                 title: "Take Doxylamine",
+        var breather = OCKTask(id: TaskID.breather,
+                                 title: "Take a Breath",
                                  carePlanUUID: nil,
                                  schedule: schedule)
-        doxylamine.instructions = "Take 25mg of doxylamine when you experience waterIntake."
-        doxylamine.asset = "pills.fill"
-        doxylamine.card = .checklist
+        breather.instructions = "Take a moment to meditate anytime you feeling overwhelmed."
+        breather.asset = "pills.fill"
+        breather.card = .checklist
 
         let waterIntakeSchedule = OCKSchedule(composing: [
             OCKScheduleElement(start: beforeBreakfast,
@@ -237,7 +237,7 @@ extension OCKStore {
         stretch.asset = "figure.walk"
         stretch.card = .checklist
 
-        try await addTasksIfNotPresent([waterIntake, doxylamine, kegels, stretch, alcholicDrinks])
+        try await addTasksIfNotPresent([waterIntake, breather, kegels, stretch, alcholicDrinks])
         try await addOnboardingTask(carePlanUUIDs[.health])
         try await addSurveyTasks(carePlanUUIDs[.checkIn])
         var contact1 = OCKContact(id: "jane",
