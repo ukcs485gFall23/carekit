@@ -9,7 +9,7 @@
 import Foundation
 
 enum TaskID {
-    static let doxylamine = "doxylamine"
+    static let breather = "breather"
     static let waterIntake = "water intake"
     static let stretch = "stretch"
     static let kegels = "kegels"
