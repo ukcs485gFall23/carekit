@@ -522,6 +522,7 @@
 		91693819271B64CB00A634ED /* Stylers */ = {
 			isa = PBXGroup;
 			children = (
+				7099D1FE29E98D900037CD8E /* AppError.swift */,
 				9169381C271B650700A634ED /* ColorStyler.swift */,
 				9169381A271B64E100A634ED /* Styler.swift */,
 			);
@@ -531,7 +532,6 @@
 		918FDEB3271B402F0045A0EF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7099D1FE29E98D900037CD8E /* AppError.swift */,
 				7099D20A29E98E400037CD8E /* InstallationChannel.swift */,
 				7099D20129E98DDF0037CD8E /* MainViewPath.swift */,
 				7099D20429E98DFF0037CD8E /* TaskID.swift */,
