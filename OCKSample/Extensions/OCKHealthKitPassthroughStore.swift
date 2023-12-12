@@ -43,7 +43,12 @@ extension OCKHealthKitPassthroughStore {
 
         func populateSampleData(_ patientUUID: UUID? = nil) async throws {
 
-        let dailySchedule = OCKSchedule.dailyAtTime(hour: 12, minutes: 00, start: Date(), end: nil, text: nil)
+        let dailySchedule = OCKSchedule.dailyAtTime(hour: 12,
+                                                    minutes: 00,
+                                                    start: Date(),
+                                                    end: nil,
+                                                    text: nil,
+                                                    targetValues: [OCKOutcomeValue(10, units: "Hours")])
         let moveSchedule = OCKSchedule.dailyAtTime(
             hour: 8, minutes: 0, start: Date(), end: nil, text: nil,
             duration: .hours(12), targetValues: [OCKOutcomeValue(30, units: "Minutes")])

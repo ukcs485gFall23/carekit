@@ -35,12 +35,14 @@ Increased motivation: Geek-App can help users to stay motivated by providing the
 <!--
 In addition, you can drop screenshots directly into your README file to add them to your README. Take these from your presentations.
 -->
+
+
 ![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 15 16](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/fa05bc15-d595-466a-8dbc-e0f43038ff72 | width=300)
-![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 15 16](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/fa05bc15-d595-466a-8dbc-e0f43038ff72)
-![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 21 45](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/1d4d4db9-6c12-49bb-ab87-15a2fdc21db2)
-![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 22 33](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/22907d35-0714-4d1c-8bba-a6fb74bdc6f4)
-![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 32 28](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/cb92106f-9453-49aa-ada1-0c8fbdaa7464)
-![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 44 08](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/0ccf43ba-4e7f-4f62-95cc-db7313c6fbc3)
+![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 15 16](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/fa05bc15-d595-466a-8dbc-e0f43038ff72 | width=300)
+![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 21 45](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/1d4d4db9-6c12-49bb-ab87-15a2fdc21db2 | width=300)
+![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 22 33](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/22907d35-0714-4d1c-8bba-a6fb74bdc6f4 | width=300)
+![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 32 28](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/cb92106f-9453-49aa-ada1-0c8fbdaa7464 | width=300)
+![Simulator Screenshot - iPhone 15 Pro - 2023-12-12 at 10 44 08](https://github.com/ukcs485gFall23/final-akwaed/assets/37512610/0ccf43ba-4e7f-4f62-95cc-db7313c6fbc3 | width=300)
 
 <!--
 List all of the members who developed the project and
