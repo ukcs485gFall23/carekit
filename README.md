@@ -103,6 +103,7 @@ Describe at least 3 features you want to add in the future before releasing your
 2. Social features for friendly competition
 3. Ability to delete tasks
 4. Ability to import images into tasks
+5. allow user to set goals on the app
 
 ## Challenges faced while developing
 <!--
