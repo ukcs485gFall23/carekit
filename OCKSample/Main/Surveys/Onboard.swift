@@ -91,6 +91,7 @@ extension Onboard {
         let healthKitTypesToWrite: Set<HKSampleType> = [
             .quantityType(forIdentifier: .bodyMassIndex)!,
             .quantityType(forIdentifier: .activeEnergyBurned)!,
+            .quantityType(forIdentifier: .numberOfAlcoholicBeverages)!,
             .workoutType()
         ]
 
@@ -98,7 +99,10 @@ extension Onboard {
             .characteristicType(forIdentifier: .dateOfBirth)!,
             .workoutType(),
             .quantityType(forIdentifier: .appleStandTime)!,
-            .quantityType(forIdentifier: .appleExerciseTime)!
+            .quantityType(forIdentifier: .appleExerciseTime)!,
+            .quantityType(forIdentifier: .appleMoveTime)!,
+            .quantityType(forIdentifier: .appleStandTime)!,
+            .quantityType(forIdentifier: .numberOfAlcoholicBeverages)!
         ]
 
         let healthKitPermissionType = ORKHealthKitPermissionType(

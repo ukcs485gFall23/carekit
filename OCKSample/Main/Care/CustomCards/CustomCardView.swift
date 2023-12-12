@@ -12,27 +12,46 @@ import SwiftUI
 struct CustomCardView: View {
     @Environment(\.tintColor) private var tintColor
     @Environment(\.careKitStyle) var style
+    @State private var puns = [
+            "Why don't programmers fight each other? They don't want to start a Ctrl war!",
+            "Did you hear about the software developer who died? He coded his last line!",
+            "I'm reading a book about anti-virus software. It's infectiously funny!",
+            "What do you call a fake software? An impastacode!",
+            "I'm reading a book on coding errors. It's hard to debug my laughter!"
+        ]
+    @State private var displayedPun = "I'm on a data diet. I see bytes and I byte it"
 
     var body: some View {
-        CardView {
-            VStack(alignment: .leading,
-                   spacing: style.dimension.directionalInsets1.top) {
+            CardView {
+                VStack(alignment: .leading,
+                       spacing: style.dimension.directionalInsets1.top) {
 
-                HStack(spacing: style.dimension.directionalInsets2.trailing) {
-                    Image(systemName: "hand.raised.fill")
-                        .resizable()
-                        .renderingMode(.template)
-                        .frame(width: 25, height: 30)
-                        .foregroundColor(Color(tintColor))
-                    Spacer()
-                    Text("Hello, World!")
+                    HStack(spacing: style.dimension.directionalInsets2.trailing) {
+                        Image(systemName: "flag.2.crossed")
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 25, height: 35)
+                            .foregroundColor(Color(tintColor))
+                        Spacer()
+                        VStack(alignment: .leading) {
+                            Text("Pun of the Day")
+                                .font(.headline)
+                                .bold()
+                            Text(displayedPun)
+                                .onAppear {
+                                    shufflePuns()
+                                }
+                        }
+                    }
 
-                }
-
-            }.padding()
+                }.padding()
+            }
         }
 
-    }
+        func shufflePuns() {
+            puns.shuffle()
+            displayedPun = puns.first ?? "I told my computer it should embrace its bugs. It crashed on me."
+        }
 }
 
 // Only need to make this change for older Xcode, otherwise use #Preview.

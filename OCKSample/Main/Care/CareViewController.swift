@@ -203,14 +203,12 @@ class CareViewController: OCKDailyPageViewController {
                         tipView.customStyle = CustomStylerKey.defaultValue
                          listViewController.appendView(tipView, animated: false)
                         */
-                        // xTODO: 5 - Need to use correct initializer instead of setting properties
-
-                        let customFeaturedView = CustomFeaturedContentViewController()
-                        // swiftlint:disable:next line_length
-                        customFeaturedView.url = URL(string: "https://www.uky.edu/hr/work-life-and-well-being/physical-activity")
-                        customFeaturedView.imageView.image = UIImage(named: "exercise.jpg")
-                        // customFeaturedView.label.text = tipTitle
-                        customFeaturedView.label.textColor = .white
+                        let customFeaturedView = CustomFeaturedContentViewController(
+                            url: "https://www.reddit.com/r/Ergonomics/",
+                            imageOverlayStyle: .unspecified,
+                            image: UIImage(named: "banner"),
+                            text: "Reddit Community",
+                            textColor: .white)
                         customFeaturedView.customStyle = CustomStylerKey.defaultValue
                         listViewController.appendView(customFeaturedView, animated: false)
 
@@ -313,9 +311,9 @@ class CareViewController: OCKDailyPageViewController {
              The event query passed into the initializer specifies that only
              today's log entries should be displayed by this log task view controller.
              */
-            let nauseaCard = OCKButtonLogTaskViewController(query: query,
+            let waterIntakeCard = OCKButtonLogTaskViewController(query: query,
                                                             store: self.store)
-            return [nauseaCard]
+            return [waterIntakeCard]
 
         case .labeledValue:
 

@@ -13,6 +13,8 @@
 		276B922B2AFA993100973C3D /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B922A2AFA993100973C3D /* ContactViewModel.swift */; };
 		276B922D2AFA995A00973C3D /* CustomContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B922C2AFA995A00973C3D /* CustomContactViewController.swift */; };
 		27A26AD12B15E4DA005C2DD7 /* Consent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A26AD02B15E4DA005C2DD7 /* Consent.swift */; };
+		27D546EC2B27A4B800CF9232 /* ReactionTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D546EB2B27A4B800CF9232 /* ReactionTime.swift */; };
+		27D546EE2B27AC0600CF9232 /* ReactionTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D546EB2B27A4B800CF9232 /* ReactionTime.swift */; };
 		27F2B2012B01FA0A00D7135E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2002B01FA0A00D7135E /* ImagePicker.swift */; };
 		27F2B2032B01FA3600D7135E /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2022B01FA3600D7135E /* ProfileImageView.swift */; };
 		27F2B2052B01FD6B00D7135E /* CarePlanID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2B2042B01FD6B00D7135E /* CarePlanID.swift */; };
@@ -200,6 +202,7 @@
 		276B922A2AFA993100973C3D /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 		276B922C2AFA995A00973C3D /* CustomContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContactViewController.swift; sourceTree = "<group>"; };
 		27A26AD02B15E4DA005C2DD7 /* Consent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consent.swift; sourceTree = "<group>"; };
+		27D546EB2B27A4B800CF9232 /* ReactionTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionTime.swift; sourceTree = "<group>"; };
 		27F2B2002B01FA0A00D7135E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		27F2B2022B01FA3600D7135E /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		27F2B2042B01FD6B00D7135E /* CarePlanID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePlanID.swift; sourceTree = "<group>"; };
@@ -519,6 +522,7 @@
 		91693819271B64CB00A634ED /* Stylers */ = {
 			isa = PBXGroup;
 			children = (
+				7099D1FE29E98D900037CD8E /* AppError.swift */,
 				9169381C271B650700A634ED /* ColorStyler.swift */,
 				9169381A271B64E100A634ED /* Styler.swift */,
 			);
@@ -528,7 +532,6 @@
 		918FDEB3271B402F0045A0EF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7099D1FE29E98D900037CD8E /* AppError.swift */,
 				7099D20A29E98E400037CD8E /* InstallationChannel.swift */,
 				7099D20129E98DDF0037CD8E /* MainViewPath.swift */,
 				7099D20429E98DFF0037CD8E /* TaskID.swift */,
@@ -647,6 +650,7 @@
 				DF6205272B067EF100C605B8 /* CheckIn.swift */,
 				DF6205292B067F0100C605B8 /* Onboard.swift */,
 				DF62052B2B067F1500C605B8 /* RangeOfMotion.swift */,
+				27D546EB2B27A4B800CF9232 /* ReactionTime.swift */,
 				DF62052D2B067F2D00C605B8 /* Surveyable.swift */,
 				DF62052F2B067F4300C605B8 /* Survey.swift */,
 			);
@@ -912,6 +916,7 @@
 				7075151E28DE1A8300A57A0C /* MainView.swift in Sources */,
 				70A98D62278A2683009B58F2 /* Styler.swift in Sources */,
 				27F2B2152B02036C00D7135E /* CarePlanID.swift in Sources */,
+				27D546EE2B27AC0600CF9232 /* ReactionTime.swift in Sources */,
 				27F2B2132B02031200D7135E /* OCKStore.swift in Sources */,
 				91693818271B5E1600A634ED /* Constants.swift in Sources */,
 				7075152028DE1BB400A57A0C /* LoginView.swift in Sources */,
@@ -966,6 +971,7 @@
 				DF58260C2B24E1B2001C39B7 /* CustomFeaturedContentViewController.swift in Sources */,
 				27F2B2052B01FD6B00D7135E /* CarePlanID.swift in Sources */,
 				7036E64025717F85006E9A3C /* Constants.swift in Sources */,
+				27D546EC2B27A4B800CF9232 /* ReactionTime.swift in Sources */,
 				7099D20529E98DFF0037CD8E /* TaskID.swift in Sources */,
 				276B92262AF40B1900973C3D /* OCKHealthKitTask+Custom.swift in Sources */,
 				7036E4CE256E9A0C006E9A3C /* ContactView.swift in Sources */,

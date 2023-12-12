@@ -24,11 +24,11 @@ final class SurveyViewSynchronizer: OCKSurveyTaskViewSynchronizer {
             view.instructionsLabel.isHidden = false
             switch surveyTask.title {
             case "Check In":
-                let pain = event.answer(kind: CheckIn.painItemIdentifier)
+                let productivity = event.answer(kind: CheckIn.productivityItemIdentifier)
                 let sleep = event.answer(kind: CheckIn.sleepItemIdentifier)
 
                 view.instructionsLabel.text = """
-                Pain: \(Int(pain))
+                Productivity: \(Int(productivity))
                 Sleep: \(Int(sleep)) hours
                 """
             case "Range of Motion":
@@ -36,6 +36,12 @@ final class SurveyViewSynchronizer: OCKSurveyTaskViewSynchronizer {
 
                 view.instructionsLabel.text = """
                 Range of Motion: \(range)
+                """
+            case "Reaction Time":
+                let reaction = event.answer(kind: #keyPath(ORKNormalizedReactionTimeResult.currentInterval))
+
+                view.instructionsLabel.text = """
+                Reaction time: \(reaction)
                 """
             default:
                 view.instructionsLabel.isHidden = true

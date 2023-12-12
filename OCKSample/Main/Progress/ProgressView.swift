@@ -42,15 +42,15 @@ struct ProgressView: View {
                         LabeledValueTaskView<InformationHeaderView>(event: stepEvent)
                     }
 
-                    if let doxylamineEvent = getEvent(for: TaskID.doxylamine) {
+                    if let standingEvent = getEvent(for: TaskID.standingTime) {
                         // Example of using another CareKitUIView.
-                        SimpleTaskView<InformationHeaderView>(event: doxylamineEvent)
+                        SimpleTaskView<InformationHeaderView>(event: standingEvent)
 
                         // Example of using another CareKitUIView.
-                        InstructionsTaskView<InformationHeaderView>(event: doxylamineEvent)
+                        InstructionsTaskView<InformationHeaderView>(event: standingEvent)
 
                         // Use our customcard view with text.
-                        CustomCardTaskView(event: doxylamineEvent)
+                        CustomCardTaskView(event: standingEvent)
                     }
 
                     // Use our customcard view with text.

@@ -69,13 +69,11 @@ let informedConsentHTML = """
       Your privacy is important to us. All of your data will be kept confidential and will not be shared with anyone outside of the study team.
 
       <h3>How to Participate</h3>
-      If you are interested in participating in the Computer Geeks Study, please click on the following link: [link to study website]
+      If you are interested in participating in the Computer Geeks Study, please consider joining our Reddit discussion fourum
 
       Thank you for your time and consideration!
 
       <br>
-
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Computer_geek_icon.svg/220px-Computer_geek_icon.svg.png" alt="A computer geek icon">
 
     </body>
     </html>
